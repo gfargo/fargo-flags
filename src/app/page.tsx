@@ -29,7 +29,7 @@ function InteractiveDemo({
         <p className="text-xl text-muted-foreground mb-6 max-w-2xl mx-auto">
           Enhanced toolkit built on{" "}
           <a href="https://flags-sdk.dev/" className="text-blue-600 hover:text-blue-800 underline">
-            Vercel's Flags SDK
+            Vercel&apos;s Flags SDK
           </a>{" "}
           with CLI tools, component registry, and streamlined developer experience.
         </p>
@@ -576,11 +576,11 @@ function InteractiveDemo({
 
       {/* Built on Flags SDK */}
       <section className="border rounded-lg p-6 mb-8">
-        <h2 className="text-2xl font-semibold mb-4">🤝 Built on Vercel's Flags SDK</h2>
+        <h2 className="text-2xl font-semibold mb-4">🤝 Built on Vercel&apos;s Flags SDK</h2>
         <p className="text-muted-foreground mb-6">
           Fargo Flags is a <strong>thin layer of abstraction</strong> that enhances{" "}
           <a href="https://flags-sdk.dev/" className="text-blue-600 hover:text-blue-800 underline">
-            Vercel's Flags SDK
+            Vercel&apos;s Flags SDK
           </a>{" "}
           with streamlined tooling and distribution. We embrace the same core principles while making them easier to adopt and scale.
         </p>
@@ -639,7 +639,7 @@ function InteractiveDemo({
           <h4 className="font-medium mb-2">💡 Why This Approach?</h4>
           <p className="text-sm text-muted-foreground">
             The Flags SDK provides excellent architectural patterns, but setting up the boilerplate and maintaining consistency across a growing codebase can be tedious. 
-            Fargo Flags automates the repetitive parts while preserving all the benefits of the "flags as code&quot; approach.
+            Fargo Flags automates the repetitive parts while preserving all the benefits of the &quot;flags as code&quot; approach.
           </p>
         </div>
       </section>

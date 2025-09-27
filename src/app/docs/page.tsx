@@ -14,7 +14,7 @@ export default function DocsPage() {
           </Link>
           <h1 className="text-4xl font-bold mb-4">Fargo Flags Documentation</h1>
           <p className="text-xl text-muted-foreground">
-            Complete guide to the enhanced feature flags toolkit built on Vercel's Flags SDK.
+            Complete guide to the enhanced feature flags toolkit built on Vercel&apos;s Flags SDK.
           </p>
         </div>
 
@@ -112,10 +112,10 @@ export default function DocsPage() {
               <p className="text-muted-foreground mb-4">
                 Fargo Flags is a <strong>streamlined toolkit</strong> built on top of{" "}
                 <a href="https://flags-sdk.dev/" className="text-blue-600 hover:text-blue-800">
-                  Vercel's Flags SDK
+                  Vercel&apos;s Flags SDK
                 </a>{" "}
                 that adds enhanced developer experience, CLI tooling, and component registry distribution.
-                It embraces the Flags SDK's "flags as code" principles while making them easier to adopt and scale.
+                It embraces the Flags SDK&apos;s &quot;flags as code&quot; principles while making them easier to adopt and scale.
               </p>
 
               <h3 className="text-lg font-semibold mb-2">Built on Solid Foundation</h3>
