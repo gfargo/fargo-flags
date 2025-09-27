@@ -1,17 +1,41 @@
 # Fargo Flags
 
-A **type-safe feature flags system** designed as a **shadcn-style component registry**. Drop-in installation, zero build steps, and full TypeScript support.
+A **streamlined toolkit** built on top of [Vercel's Flags SDK](https://flags-sdk.dev/) that adds **shadcn-style component registry distribution**, **interactive CLI tools**, and **enhanced developer experience** for type-safe feature flags in Next.js.
 
-## ✨ Key Features
+## ✨ What Fargo Flags Adds to Vercel's Flags SDK
+
+While [Vercel's Flags SDK](https://flags-sdk.dev/) provides the solid foundation of "flags as code" with server-side resolution and type safety, Fargo Flags enhances the experience with:
 
 - 🎯 **One-file-per-flag** architecture with individual flag definitions
-- 🔒 **Type-safe** end-to-end with Zod schema validation  
-- 🚀 **Zero build step** - static imports with checked-in aggregator
-- 🌐 **SSR-first** - server-side resolution with client hydration
-- 🔐 **Security-focused** - server-only vs client-exposed flag control
-- 🛠️ **Developer tools** - interactive wizard and consistency checker
-- 🧪 **Testing ready** - easy flag overrides for tests and Storybook
-- 📦 **Registry distribution** - install components via shadcn CLI
+- 🛠️ **Interactive CLI wizard** - guided flag creation with automatic registry updates
+- 🔍 **Consistency checker** - validate flag registry integrity in CI/CD
+- 📦 **shadcn-style registry** - drop-in installation via component registry
+- 🧪 **Enhanced testing** - easy flag overrides for tests and Storybook
+- 🎨 **React components** - `<Flag>` conditional rendering and providers
+- 📚 **Comprehensive docs** - interactive demo and complete usage guide
+- 🔧 **Zero build step** - static imports with checked-in aggregator
+
+## 🤝 Built on Vercel's Flags SDK
+
+Fargo Flags is a **thin layer of abstraction** that enhances [Vercel's Flags SDK](https://flags-sdk.dev/) with streamlined tooling and distribution. We embrace the Flags SDK's core principles:
+
+- **Flags as code** - declarative flag definitions with consistent call sites
+- **Server-side resolution** - flags resolve on the server for security and performance  
+- **No vendor lock-in** - your flag logic stays in your codebase
+- **Type safety** - full TypeScript support with runtime validation
+
+### What We Add
+
+While the Flags SDK provides the solid foundation, Fargo Flags makes it **easier to adopt and scale**:
+
+- **Interactive CLI wizard** for creating flags without manual boilerplate
+- **Automatic registry management** - no need to manually maintain imports
+- **Component registry distribution** - install via shadcn-style commands
+- **Enhanced React integration** - providers, hooks, and conditional components
+- **Testing utilities** - easy flag overrides for development and QA
+- **Consistency validation** - catch configuration drift in CI/CD
+
+Think of it as **"Flags SDK with batteries included"** - same great foundation, enhanced developer experience.
 
 ## 🚀 Quick Start
 
@@ -339,12 +363,14 @@ test("premium features", () => {
 
 ## 🏗️ How It Works
 
-1. **Define** flags in individual `*.flag.ts` files with schemas and decision logic
-2. **Wizard** (`pnpm flags:new`) creates files and updates registry automatically  
-3. **Server** resolves all flags with context via `resolveAllFlags()`
-4. **Client** receives safe subset via `pickClientFlags()` and React provider
-5. **Components** use `useFlag()` hook or `<Flag>` wrapper for conditional rendering
-6. **Validator** (`pnpm flags:check`) ensures registry consistency in CI/CD
+Fargo Flags follows the same core principles as [Vercel's Flags SDK](https://flags-sdk.dev/) - flags as code with server-side resolution - while adding streamlined tooling:
+
+1. **Define** flags in individual `*.flag.ts` files with schemas and decision logic (like Flags SDK)
+2. **Wizard** (`pnpm flags:new`) creates files and updates registry automatically (Fargo enhancement)
+3. **Server** resolves all flags with context via `resolveAllFlags()` (enhanced Flags SDK pattern)
+4. **Client** receives safe subset via `pickClientFlags()` and React provider (Fargo tooling)
+5. **Components** use `useFlag()` hook or `<Flag>` wrapper for conditional rendering (Fargo components)
+6. **Validator** (`pnpm flags:check`) ensures registry consistency in CI/CD (Fargo tooling)
 
 ## 🔒 Security & Performance
 
@@ -366,6 +392,7 @@ test("premium features", () => {
 
 - **[Live Demo](/)** - Interactive feature flags showcase
 - **[Documentation](/docs)** - Complete setup and usage guide
+- **[Vercel Flags SDK](https://flags-sdk.dev/)** - The underlying foundation we build upon
 - **[GitHub](https://github.com/your-repo/fargo-flags)** - Source code and issues
 
 ## 📝 License

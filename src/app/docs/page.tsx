@@ -14,8 +14,7 @@ export default function DocsPage() {
           </Link>
           <h1 className="text-4xl font-bold mb-4">Fargo Flags Documentation</h1>
           <p className="text-xl text-muted-foreground">
-            Complete guide to implementing type-safe feature flags in your
-            Next.js application.
+            Complete guide to the enhanced feature flags toolkit built on Vercel's Flags SDK.
           </p>
         </div>
 
@@ -111,37 +110,47 @@ export default function DocsPage() {
             <h2 className="text-2xl font-bold mb-4">1. Overview</h2>
             <div className="prose max-w-none">
               <p className="text-muted-foreground mb-4">
-                Fargo Flags is a type-safe feature flags system designed
-                specifically for Next.js applications. It provides a seamless
-                way to manage feature rollouts, A/B testing, and conditional
-                functionality with full TypeScript support and zero build steps.
+                Fargo Flags is a <strong>streamlined toolkit</strong> built on top of{" "}
+                <a href="https://flags-sdk.dev/" className="text-blue-600 hover:text-blue-800">
+                  Vercel's Flags SDK
+                </a>{" "}
+                that adds enhanced developer experience, CLI tooling, and component registry distribution.
+                It embraces the Flags SDK's "flags as code" principles while making them easier to adopt and scale.
               </p>
 
-              <h3 className="text-lg font-semibold mb-2">Key Benefits</h3>
+              <h3 className="text-lg font-semibold mb-2">Built on Solid Foundation</h3>
+              <p className="text-muted-foreground mb-3">
+                We leverage Vercel&apos;s Flags SDK core principles:
+              </p>
+              <ul className="list-disc pl-6 space-y-1 text-muted-foreground mb-4">
+                <li><strong>Flags as code:</strong> Declarative definitions with consistent call sites</li>
+                <li><strong>Server-side resolution:</strong> Secure, performant flag evaluation</li>
+                <li><strong>Type safety:</strong> Full TypeScript support with runtime validation</li>
+                <li><strong>No vendor lock-in:</strong> Your flag logic stays in your codebase</li>
+              </ul>
+
+              <h3 className="text-lg font-semibold mb-2">Enhanced Developer Experience</h3>
+              <p className="text-muted-foreground mb-3">
+                Fargo Flags adds powerful tooling on top of this foundation:
+              </p>
               <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
                 <li>
-                  <strong>Type Safety:</strong> Full TypeScript support with Zod
-                  schema validation
+                  <strong>Interactive CLI wizard:</strong> Guided flag creation without manual boilerplate
                 </li>
                 <li>
-                  <strong>Zero Build Step:</strong> No codegen or build
-                  processes required
+                  <strong>Automatic registry management:</strong> No need to manually maintain imports
                 </li>
                 <li>
-                  <strong>SSR Ready:</strong> Server-side flag resolution with
-                  client hydration
+                  <strong>Component registry distribution:</strong> Install via shadcn-style commands
                 </li>
                 <li>
-                  <strong>Developer Experience:</strong> CLI tools for flag
-                  creation and validation
+                  <strong>Enhanced React integration:</strong> Providers, hooks, and conditional components
                 </li>
                 <li>
-                  <strong>Testing Support:</strong> Easy flag overrides for
-                  tests and Storybook
+                  <strong>Testing utilities:</strong> Easy flag overrides for development and QA
                 </li>
                 <li>
-                  <strong>Flexible Architecture:</strong> One file per flag with
-                  centralized registry
+                  <strong>Consistency validation:</strong> Catch configuration drift in CI/CD
                 </li>
               </ul>
             </div>

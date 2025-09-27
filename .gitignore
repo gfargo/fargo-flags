@@ -38,5 +38,6 @@ next-env.d.ts
 .coco.config.json
 
 .kiro
+.claude
 
 temp

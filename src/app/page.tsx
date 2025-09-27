@@ -27,18 +27,21 @@ function InteractiveDemo({
           Fargo Flags
         </h1>
         <p className="text-xl text-muted-foreground mb-6 max-w-2xl mx-auto">
-          A type-safe feature flags system with shadcn-style component registry. 
-          Build, test, and deploy features with confidence.
+          Enhanced toolkit built on{" "}
+          <a href="https://flags-sdk.dev/" className="text-blue-600 hover:text-blue-800 underline">
+            Vercel's Flags SDK
+          </a>{" "}
+          with CLI tools, component registry, and streamlined developer experience.
         </p>
         <div className="flex gap-4 justify-center mb-6">
           <div className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">
-            ✓ Type Safe
+            ✓ Built on Flags SDK
           </div>
           <div className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
-            ✓ Zero Build Step
+            ✓ Enhanced DX
           </div>
           <div className="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">
-            ✓ SSR Ready
+            ✓ CLI Tools
           </div>
         </div>
         <div className="flex gap-4 justify-center">
@@ -49,7 +52,7 @@ function InteractiveDemo({
             📚 View Documentation
           </a>
           <a 
-            href="https://github.com/your-repo/fargo-flags" 
+            href="https://github.com/gfargo/fargo-flags" 
             className="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors font-medium"
           >
             ⭐ Star on GitHub
@@ -568,6 +571,76 @@ function InteractiveDemo({
               <code className="text-xs bg-white px-2 py-1 rounded border">&quot;flags:new&quot;: &quot;tsx scripts/create-flag.ts&quot;</code>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Built on Flags SDK */}
+      <section className="border rounded-lg p-6 mb-8">
+        <h2 className="text-2xl font-semibold mb-4">🤝 Built on Vercel's Flags SDK</h2>
+        <p className="text-muted-foreground mb-6">
+          Fargo Flags is a <strong>thin layer of abstraction</strong> that enhances{" "}
+          <a href="https://flags-sdk.dev/" className="text-blue-600 hover:text-blue-800 underline">
+            Vercel's Flags SDK
+          </a>{" "}
+          with streamlined tooling and distribution. We embrace the same core principles while making them easier to adopt and scale.
+        </p>
+        
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+            <h3 className="font-medium mb-3">🏗️ Flags SDK Foundation</h3>
+            <ul className="text-sm space-y-2 text-muted-foreground">
+              <li className="flex items-start gap-2">
+                <span className="text-green-600 mt-0.5">✓</span>
+                <span><strong>Flags as code</strong> - declarative definitions with consistent call sites</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-green-600 mt-0.5">✓</span>
+                <span><strong>Server-side resolution</strong> - secure, performant flag evaluation</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-green-600 mt-0.5">✓</span>
+                <span><strong>Type safety</strong> - full TypeScript support with runtime validation</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-green-600 mt-0.5">✓</span>
+                <span><strong>No vendor lock-in</strong> - your flag logic stays in your codebase</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+            <h3 className="font-medium mb-3">🚀 Fargo Enhancements</h3>
+            <ul className="text-sm space-y-2 text-muted-foreground">
+              <li className="flex items-start gap-2">
+                <span className="text-blue-600 mt-0.5">+</span>
+                <span><strong>Interactive CLI wizard</strong> for guided flag creation</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-blue-600 mt-0.5">+</span>
+                <span><strong>Automatic registry management</strong> - no manual imports</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-blue-600 mt-0.5">+</span>
+                <span><strong>Component registry distribution</strong> via shadcn CLI</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-blue-600 mt-0.5">+</span>
+                <span><strong>Enhanced React components</strong> and testing utilities</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-blue-600 mt-0.5">+</span>
+                <span><strong>Consistency validation</strong> for CI/CD pipelines</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+          <h4 className="font-medium mb-2">💡 Why This Approach?</h4>
+          <p className="text-sm text-muted-foreground">
+            The Flags SDK provides excellent architectural patterns, but setting up the boilerplate and maintaining consistency across a growing codebase can be tedious. 
+            Fargo Flags automates the repetitive parts while preserving all the benefits of the "flags as code&quot; approach.
+          </p>
         </div>
       </section>
 
