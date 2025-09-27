@@ -1,4 +1,4 @@
-# Fargo Flags
+# Fargo Flags ⛳️
 
 A **streamlined toolkit** built on top of [Vercel's Flags SDK](https://flags-sdk.dev/) that adds **shadcn-style component registry distribution**, **interactive CLI tools**, and **enhanced developer experience** for type-safe feature flags in Next.js.
 
