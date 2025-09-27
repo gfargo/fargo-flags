@@ -10,6 +10,6 @@ export function FlagsTestProvider({
   children,
 }: PropsWithChildren<{ overrides?: PartialClientFlags }>) {
   const clientDefault = pickClientFlags(defaultFlags);
-  const flags = useMemo(() => ({ ...clientDefault, ...overrides }), [overrides]);
+  const flags = useMemo(() => ({ ...clientDefault, ...overrides }), [clientDefault, overrides]);
   return <FlagsProvider flags={flags}>{children}</FlagsProvider>;
 }

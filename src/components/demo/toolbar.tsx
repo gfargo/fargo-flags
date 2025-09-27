@@ -1,10 +1,7 @@
 "use client";
-import { useFlag } from "@/components/flags/flags-provider";
 import { Flag } from "@/components/flags/flag";
 
 export function DemoToolbar() {
-  const showAssistant = useFlag("enable-ai-assistant-in-pdf-toolbar");
-
   return (
     <div className="flex items-center justify-between p-3 border-b bg-gray-50">
       <h3 className="font-medium">Document Viewer</h3>

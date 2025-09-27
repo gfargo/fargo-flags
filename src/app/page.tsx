@@ -323,7 +323,7 @@ function InteractiveDemo({
                   <div className="text-sm opacity-80">
                     <Flag when="theme-mode" is="dark">
                       <div className="p-3 bg-gray-800 border border-gray-700 rounded">
-                        🌙 Dark mode provides a sleek, modern look that's easier on the eyes in low-light environments.
+                        🌙 Dark mode provides a sleek, modern look that&apos;s easier on the eyes in low-light environments.
                       </div>
                     </Flag>
                     <Flag when="theme-mode" is="light">
@@ -413,7 +413,7 @@ function InteractiveDemo({
             </p>
             <div className="bg-muted p-3 rounded text-sm">
               <div className="mb-2 font-mono text-xs">
-                const showAssistant = useFlag("enable-ai-assistant-in-pdf-toolbar");
+                const showAssistant = useFlag(&quot;enable-ai-assistant-in-pdf-toolbar&quot;);
               </div>
               <div className="text-muted-foreground">
                 Current value: <span className="font-medium text-foreground">{String(showAssistant)}</span>
@@ -429,7 +429,7 @@ function InteractiveDemo({
             </p>
             <div className="bg-muted p-3 rounded text-sm space-y-2">
               <div className="font-mono text-xs">
-                &lt;Flag when="theme-mode&quot; is=&quot;dark&quot;&gt;
+                &lt;Flag when=&quot;theme-mode&quot; is=&quot;dark&quot;&gt;
               </div>
               <div className="pl-4">
                 <Flag when="theme-mode" is="dark">
@@ -453,7 +453,7 @@ function InteractiveDemo({
             </p>
             <div className="bg-muted p-3 rounded text-sm space-y-2">
               <div className="font-mono text-xs">
-                // app/layout.tsx
+                {/* app/layout.tsx */}
               </div>
               <div className="font-mono text-xs">
                 const serverFlags = await resolveAllFlags();
@@ -565,7 +565,7 @@ function InteractiveDemo({
             </div>
             <div>
               <p className="font-medium mb-1">Add to package.json:</p>
-              <code className="text-xs bg-white px-2 py-1 rounded border">"flags:new": "tsx scripts/create-flag.ts"</code>
+              <code className="text-xs bg-white px-2 py-1 rounded border">&quot;flags:new&quot;: &quot;tsx scripts/create-flag.ts&quot;</code>
             </div>
           </div>
         </div>
@@ -767,7 +767,7 @@ components/flags/
               <div>
                 <p className="text-sm mb-2">Add package.json scripts:</p>
                 <code className="block p-3 bg-muted rounded text-sm text-xs">
-                  "flags:new": "tsx scripts/create-flag.ts&quot;
+                  &quot;flags:new&quot;: &quot;tsx scripts/create-flag.ts&quot;
                 </code>
               </div>
             </div>

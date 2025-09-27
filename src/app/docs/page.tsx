@@ -441,7 +441,7 @@ export default defineFlag({
             
             <p className="text-muted-foreground mb-6">
               <code>resolveAllFlags</code> is the server-side engine that evaluates all your feature flags 
-              and returns their resolved values. It's the bridge between your flag definitions and your application.
+              and returns their resolved values. It&apos;s the bridge between your flag definitions and your application.
             </p>
 
             <h3 className="text-lg font-semibold mb-2">How It Works</h3>
@@ -570,7 +570,7 @@ function MyComponent() {
                 <h4 className="font-medium mb-2">🛡️ Server-Side Resolution</h4>
                 <ul className="text-sm text-muted-foreground space-y-1">
                   <li>Security: Sensitive logic stays on the server</li>
-                  <li>Performance: Complex decisions don't slow down the client</li>
+                  <li>Performance: Complex decisions don&apos;t slow down the client</li>
                   <li>Consistency: Same flag values across the entire request</li>
                 </ul>
               </div>
@@ -1785,7 +1785,7 @@ export const WithFeatureDisabled = {
                 <div className="p-3 border rounded-lg">
                   <h5 className="font-medium text-sm mb-1">File Structure</h5>
                   <ul className="text-xs text-muted-foreground space-y-1">
-                    <li>• All .flag.ts files export required 'key'</li>
+                    <li>• All .flag.ts files export required &apos;key&apos;</li>
                     <li>• Flag keys match filename conventions</li>
                     <li>• No duplicate flag keys</li>
                   </ul>
@@ -1942,7 +1942,7 @@ import { registry } from "../src/lib/flags/registry.config";
               <div className="space-y-3 text-sm">
                 <div className="flex items-start gap-2">
                   <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">1</span>
-                  <span><strong>Flag Key:</strong> Enter kebab-case flag identifier (e.g., "enable-new-dashboard")</span>
+                  <span><strong>Flag Key:</strong> Enter kebab-case flag identifier (e.g., &quot;enable-new-dashboard&quot;)</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">2</span>

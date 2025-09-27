@@ -5,8 +5,8 @@ export type FlagContext = {
   getWorkspace?: () => Promise<{ id: string; plan?: string } | null>;
 };
 
-export type ClientExposure =
-  | { public: true; serialize?: (value: any) => any } // exposed to client
+export type ClientExposure<T = unknown> =
+  | { public: true; serialize?: (value: T) => unknown } // exposed to client
   | { public: false }; // server-only
 
 export type FlagDefinition<S extends z.ZodTypeAny> = {
@@ -15,7 +15,7 @@ export type FlagDefinition<S extends z.ZodTypeAny> = {
   description?: string;
   defaultValue: z.infer<S>;
   options?: { value: z.infer<S>; label?: string }[];
-  client?: ClientExposure; // NEXT_PUBLIC-style control
+  client?: ClientExposure<z.infer<S>>; // NEXT_PUBLIC-style control
   decide?: (ctx: FlagContext) => z.infer<S> | Promise<z.infer<S>>; // server-side only
 };
 
