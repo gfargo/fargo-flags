@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { resolveAllFlags, pickClientFlags } from "@/lib/flags/runtime";
 import { FlagsProvider } from "@/components/flags/flags-provider";
@@ -39,6 +40,7 @@ export default async function RootLayout({
         <FlagsProvider flags={clientFlags}>
           {children}
         </FlagsProvider>
+        <Analytics />
       </body>
     </html>
   );
