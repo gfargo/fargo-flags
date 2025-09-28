@@ -1,107 +1,128 @@
+"use client";
 import Link from "next/link";
+import { useState, useEffect } from "react";
+
+const sections = [
+  { id: "overview", title: "1. Overview" },
+  { id: "installation", title: "2. Installation" },
+  { id: "quick-start", title: "3. Quick Start" },
+  { id: "defining-flags", title: "4. Defining Flags" },
+  { id: "resolve-all-flags", title: "5. resolveAllFlags" },
+  { id: "using-flags", title: "6. Using Flags" },
+  { id: "components", title: "7. Components" },
+  { id: "testing", title: "8. Testing" },
+  { id: "cli-tools", title: "9. CLI Tools" },
+  { id: "architecture", title: "10. Architecture" },
+  { id: "best-practices", title: "11. Best Practices" },
+  { id: "troubleshooting", title: "12. Troubleshooting" },
+  { id: "api-reference", title: "13. API Reference" },
+];
 
 export default function DocsPage() {
-  return (
-    <div className="font-sans min-h-screen bg-gradient-to-br from-background via-primary/5 to-background p-8 pb-20 gap-16 sm:p-20">
-      <main className="max-w-4xl mx-auto">
-        {/* Header */}
-        <div className="mb-8">
-          <Link
-            href="/"
-            className="text-primary hover:text-primary/80 text-sm mb-4 inline-block"
-          >
-            ← Back to Demo
-          </Link>
-          <h1 className="text-4xl font-bold mb-4">Fargo Flags Documentation</h1>
-          <p className="text-xl text-muted-foreground">
-            Complete guide to the enhanced feature flags toolkit built on Vercel&apos;s Flags SDK.
-          </p>
-        </div>
+  const [activeSection, setActiveSection] = useState("overview");
 
-        {/* Table of Contents */}
-        <nav className="border rounded-lg p-6 mb-8 bg-muted">
-          <h2 className="text-lg font-semibold mb-4">Table of Contents</h2>
-          <div className="grid md:grid-cols-2 gap-2 text-sm">
-            <a
-              href="#overview"
-              className="text-primary hover:text-primary/80"
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        rootMargin: "-20% 0px -70% 0px",
+        threshold: 0,
+      }
+    );
+
+    sections.forEach(({ id }) => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  return (
+    <div className="font-sans min-h-screen bg-gradient-to-br from-background via-primary/5 to-background">
+      <div className="flex">
+        {/* Sticky Sidebar Navigation */}
+        <aside className="hidden lg:block w-64 sticky top-0 h-screen overflow-y-auto border-r border-border bg-card/50 backdrop-blur-sm">
+          <div className="p-6">
+            <Link
+              href="/"
+              className="text-primary hover:text-primary/80 text-sm mb-6 inline-block"
             >
-              1. Overview
-            </a>
-            <a
-              href="#installation"
-              className="text-primary hover:text-primary/80"
-            >
-              2. Installation
-            </a>
-            <a
-              href="#quick-start"
-              className="text-primary hover:text-primary/80"
-            >
-              3. Quick Start
-            </a>
-            <a
-              href="#defining-flags"
-              className="text-primary hover:text-primary/80"
-            >
-              4. Defining Flags
-            </a>
-            <a
-              href="#resolve-all-flags"
-              className="text-primary hover:text-primary/80"
-            >
-              5. resolveAllFlags
-            </a>
-            <a
-              href="#using-flags"
-              className="text-primary hover:text-primary/80"
-            >
-              6. Using Flags
-            </a>
-            <a
-              href="#components"
-              className="text-primary hover:text-primary/80"
-            >
-              7. Components
-            </a>
-            <a
-              href="#testing"
-              className="text-primary hover:text-primary/80"
-            >
-              8. Testing
-            </a>
-            <a
-              href="#cli-tools"
-              className="text-primary hover:text-primary/80"
-            >
-              9. CLI Tools
-            </a>
-            <a
-              href="#architecture"
-              className="text-primary hover:text-primary/80"
-            >
-              10. Architecture
-            </a>
-            <a
-              href="#best-practices"
-              className="text-primary hover:text-primary/80"
-            >
-              11. Best Practices
-            </a>
-            <a
-              href="#troubleshooting"
-              className="text-primary hover:text-primary/80"
-            >
-              12. Troubleshooting
-            </a>
-            <a
-              href="#api-reference"
-              className="text-primary hover:text-primary/80"
-            >
-              13. API Reference
-            </a>
+              ← Back to Demo
+            </Link>
+            
+            <h2 className="text-lg font-semibold mb-4 text-foreground">Documentation</h2>
+            
+            <nav className="space-y-1">
+              {sections.map(({ id, title }) => (
+                <button
+                  key={id}
+                  onClick={() => scrollToSection(id)}
+                  className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${
+                    activeSection === id
+                      ? "bg-primary/10 text-primary font-medium border-l-2 border-primary"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                  }`}
+                >
+                  {title}
+                </button>
+              ))}
+            </nav>
           </div>
-        </nav>
+        </aside>
+
+        {/* Main Content */}
+        <main className="flex-1 p-8 pb-20 gap-16 sm:p-20 max-w-4xl mx-auto lg:mx-0">
+          {/* Header */}
+          <div className="mb-8 lg:hidden">
+            <Link
+              href="/"
+              className="text-primary hover:text-primary/80 text-sm mb-4 inline-block"
+            >
+              ← Back to Demo
+            </Link>
+            <h1 className="text-4xl font-bold mb-4">Fargo Flags Documentation</h1>
+            <p className="text-xl text-muted-foreground">
+              Complete guide to the enhanced feature flags toolkit built on Vercel&apos;s Flags SDK.
+            </p>
+          </div>
+
+          {/* Mobile Table of Contents */}
+          <nav className="lg:hidden border rounded-lg p-6 mb-8 bg-muted">
+            <h2 className="text-lg font-semibold mb-4">Table of Contents</h2>
+            <div className="grid md:grid-cols-2 gap-2 text-sm">
+              {sections.map(({ id, title }) => (
+                <button
+                  key={id}
+                  onClick={() => scrollToSection(id)}
+                  className="text-left text-primary hover:text-primary/80"
+                >
+                  {title}
+                </button>
+              ))}
+            </div>
+          </nav>
+
+          {/* Desktop Header */}
+          <div className="hidden lg:block mb-8">
+            <h1 className="text-4xl font-bold mb-4">Fargo Flags Documentation</h1>
+            <p className="text-xl text-muted-foreground">
+              Complete guide to the enhanced feature flags toolkit built on Vercel&apos;s Flags SDK.
+            </p>
+          </div>
 
         {/* Content Sections */}
         <div className="space-y-12">
@@ -221,7 +242,7 @@ export default function DocsPage() {
               <p className="text-sm text-muted-foreground mb-2">
                 After installing the CLI tools, add these scripts to your <code>package.json</code>:
               </p>
-              <pre className="bg-white p-3 rounded text-sm border">
+              <pre className="bg-background p-3 rounded text-sm border">
 {`{
   "scripts": {
     "flags:new": "tsx scripts/create-flag.ts",
@@ -335,7 +356,7 @@ export default async function RootLayout({ children }) {
               <p className="text-sm text-muted-foreground mb-2">
                 Add these scripts to your <code>package.json</code>:
               </p>
-              <pre className="bg-white p-3 rounded text-sm border">
+              <pre className="bg-background p-3 rounded text-sm border">
 {`"scripts": {
   "flags:new": "tsx scripts/create-flag.ts",
   "flags:check": "tsx scripts/check-flags-registry.ts"
@@ -747,12 +768,12 @@ export async function GET() {
                 <div className="bg-muted p-4 rounded-lg text-sm mb-4">
                   <ul className="space-y-2">
                     <li>
-                      <code className="text-blue-600">flags</code>:{" "}
+                      <code className="text-primary">flags</code>:{" "}
                       <code>ClientFlags</code> - The client-safe flag values
                       from <code>pickClientFlags()</code>
                     </li>
                     <li>
-                      <code className="text-blue-600">children</code>:{" "}
+                      <code className="text-primary">children</code>:{" "}
                       <code>React.ReactNode</code> - Your app components
                     </li>
                   </ul>
@@ -1158,26 +1179,26 @@ function TypeSafeExample() {
                 <div className="bg-muted p-4 rounded-lg text-sm mb-4">
                   <ul className="space-y-2">
                     <li>
-                      <code className="text-blue-600">when</code>:{" "}
+                      <code className="text-primary">when</code>:{" "}
                       <code>string</code> - The flag key to check (required)
                     </li>
                     <li>
-                      <code className="text-blue-600">is</code>:{" "}
+                      <code className="text-primary">is</code>:{" "}
                       <code>any</code> - Render children when flag value equals
                       this
                     </li>
                     <li>
-                      <code className="text-blue-600">not</code>:{" "}
+                      <code className="text-primary">not</code>:{" "}
                       <code>any</code> - Render children when flag value does
                       NOT equal this
                     </li>
                     <li>
-                      <code className="text-blue-600">fallback</code>:{" "}
+                      <code className="text-primary">fallback</code>:{" "}
                       <code>ReactNode</code> - Content to show when condition is
                       false
                     </li>
                     <li>
-                      <code className="text-blue-600">children</code>:{" "}
+                      <code className="text-primary">children</code>:{" "}
                       <code>ReactNode</code> - Content to show when condition is
                       true
                     </li>
@@ -1328,12 +1349,12 @@ function Dashboard() {
                 <div className="bg-muted p-4 rounded-lg text-sm mb-4">
                   <ul className="space-y-2">
                     <li>
-                      <code className="text-blue-600">overrides</code>:{" "}
+                      <code className="text-primary">overrides</code>:{" "}
                       <code>Partial&lt;ClientFlags&gt;</code> - Flag values to
                       override
                     </li>
                     <li>
-                      <code className="text-blue-600">children</code>:{" "}
+                      <code className="text-primary">children</code>:{" "}
                       <code>React.ReactNode</code> - Components to test
                     </li>
                   </ul>
@@ -2328,18 +2349,19 @@ export const clientFlagKeys = [
           </section>
         </div>
 
-        {/* Footer */}
-        <div className="mt-16 pt-8 border-t text-center">
-          <p className="text-muted-foreground">
-            <Link
-              href="/"
-              className="text-primary hover:text-primary/80"
-            >
-              ← Back to Demo
-            </Link>
-          </p>
-        </div>
-      </main>
+          {/* Footer */}
+          <div className="mt-16 pt-8 border-t text-center">
+            <p className="text-muted-foreground">
+              <Link
+                href="/"
+                className="text-primary hover:text-primary/80"
+              >
+                ← Back to Demo
+              </Link>
+            </p>
+          </div>
+        </main>
+      </div>
     </div>
   );
 }

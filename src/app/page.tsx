@@ -96,8 +96,8 @@ function InteractiveDemo({
                 <h3 className="font-medium text-lg">🤖 AI Assistant Feature</h3>
                 <span className={`px-3 py-1 rounded-full text-sm font-medium ${
                   showAssistant 
-                    ? 'bg-green-100 text-green-800' 
-                    : 'bg-gray-100 text-gray-800'
+                    ? 'bg-primary/10 text-primary' 
+                    : 'bg-muted text-muted-foreground'
                 }`}>
                   {showAssistant ? 'ENABLED' : 'DISABLED'}
                 </span>
@@ -112,10 +112,10 @@ function InteractiveDemo({
                   <div className="flex items-center justify-between p-3 border-b mb-3">
                     <span className="font-medium">PDF Document Viewer</span>
                     <div className="flex gap-2">
-                      <button className="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded text-sm">
+                      <button className="px-3 py-1 bg-muted hover:bg-muted/80 rounded text-sm">
                         📄 Save
                       </button>
-                      <button className="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded text-sm">
+                      <button className="px-3 py-1 bg-muted hover:bg-muted/80 rounded text-sm">
                         🖨️ Print
                       </button>
                       <Flag when="enable-ai-assistant-in-pdf-toolbar">
@@ -326,37 +326,37 @@ function InteractiveDemo({
                 </p>
                 
                 <div className={`border rounded-lg p-4 transition-colors ${
-                  themeMode === 'dark' ? 'bg-gray-900 text-white border-gray-700' : 
-                  themeMode === 'light' ? 'bg-white text-gray-900 border-gray-200' :
-                  'bg-gradient-to-br from-white to-gray-100 text-gray-900 border-gray-300'
+                  themeMode === 'dark' ? 'bg-card text-card-foreground border-border' : 
+                  themeMode === 'light' ? 'bg-background text-foreground border-border' :
+                  'bg-gradient-to-br from-background to-muted text-foreground border-border'
                 }`}>
                   <div className="flex items-center justify-between p-3 border-b mb-3 border-current border-opacity-20">
                     <span className="font-medium">Application Header</span>
                     <div className="flex gap-2">
                       <Flag when="theme-mode" is="dark">
-                        <span className="text-xs bg-gray-800 px-2 py-1 rounded">🌙 Dark</span>
+                        <span className="text-xs bg-muted text-muted-foreground px-2 py-1 rounded">🌙 Dark</span>
                       </Flag>
                       <Flag when="theme-mode" is="light">
-                        <span className="text-xs bg-gray-100 text-gray-900 px-2 py-1 rounded">☀️ Light</span>
+                        <span className="text-xs bg-muted text-muted-foreground px-2 py-1 rounded">☀️ Light</span>
                       </Flag>
                       <Flag when="theme-mode" is="auto">
-                        <span className="text-xs bg-gradient-to-r from-blue-100 to-purple-100 text-gray-900 px-2 py-1 rounded">🔄 Auto</span>
+                        <span className="text-xs bg-gradient-to-r from-primary/10 to-primary/20 text-primary px-2 py-1 rounded">🔄 Auto</span>
                       </Flag>
                     </div>
                   </div>
                   <div className="text-sm opacity-80">
                     <Flag when="theme-mode" is="dark">
-                      <div className="p-3 bg-gray-800 border border-gray-700 rounded">
+                      <div className="p-3 bg-muted border border-border rounded">
                         🌙 Dark mode provides a sleek, modern look that&apos;s easier on the eyes in low-light environments.
                       </div>
                     </Flag>
                     <Flag when="theme-mode" is="light">
-                      <div className="p-3 bg-gray-50 border border-gray-200 rounded text-gray-900">
+                      <div className="p-3 bg-muted border border-border rounded">
                         ☀️ Light mode offers a clean, bright interface perfect for daytime use and maximum readability.
                       </div>
                     </Flag>
                     <Flag when="theme-mode" is="auto">
-                      <div className="p-3 bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded text-gray-900">
+                      <div className="p-3 bg-gradient-to-r from-primary/5 to-primary/10 border border-primary/20 rounded">
                         🔄 Auto mode automatically switches between light and dark themes based on your system preferences.
                       </div>
                     </Flag>
