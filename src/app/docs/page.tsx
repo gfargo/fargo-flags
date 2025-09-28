@@ -2,13 +2,13 @@ import Link from "next/link";
 
 export default function DocsPage() {
   return (
-    <div className="font-sans min-h-screen p-8 pb-20 gap-16 sm:p-20">
+    <div className="font-sans min-h-screen bg-gradient-to-br from-background via-primary/5 to-background p-8 pb-20 gap-16 sm:p-20">
       <main className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="mb-8">
           <Link
             href="/"
-            className="text-blue-600 hover:text-blue-800 text-sm mb-4 inline-block"
+            className="text-primary hover:text-primary/80 text-sm mb-4 inline-block"
           >
             ← Back to Demo
           </Link>
@@ -24,79 +24,79 @@ export default function DocsPage() {
           <div className="grid md:grid-cols-2 gap-2 text-sm">
             <a
               href="#overview"
-              className="text-blue-600 hover:text-blue-800"
+              className="text-primary hover:text-primary/80"
             >
               1. Overview
             </a>
             <a
               href="#installation"
-              className="text-blue-600 hover:text-blue-800"
+              className="text-primary hover:text-primary/80"
             >
               2. Installation
             </a>
             <a
               href="#quick-start"
-              className="text-blue-600 hover:text-blue-800"
+              className="text-primary hover:text-primary/80"
             >
               3. Quick Start
             </a>
             <a
               href="#defining-flags"
-              className="text-blue-600 hover:text-blue-800"
+              className="text-primary hover:text-primary/80"
             >
               4. Defining Flags
             </a>
             <a
               href="#resolve-all-flags"
-              className="text-blue-600 hover:text-blue-800"
+              className="text-primary hover:text-primary/80"
             >
               5. resolveAllFlags
             </a>
             <a
               href="#using-flags"
-              className="text-blue-600 hover:text-blue-800"
+              className="text-primary hover:text-primary/80"
             >
               6. Using Flags
             </a>
             <a
               href="#components"
-              className="text-blue-600 hover:text-blue-800"
+              className="text-primary hover:text-primary/80"
             >
               7. Components
             </a>
             <a
               href="#testing"
-              className="text-blue-600 hover:text-blue-800"
+              className="text-primary hover:text-primary/80"
             >
               8. Testing
             </a>
             <a
               href="#cli-tools"
-              className="text-blue-600 hover:text-blue-800"
+              className="text-primary hover:text-primary/80"
             >
               9. CLI Tools
             </a>
             <a
               href="#architecture"
-              className="text-blue-600 hover:text-blue-800"
+              className="text-primary hover:text-primary/80"
             >
               10. Architecture
             </a>
             <a
               href="#best-practices"
-              className="text-blue-600 hover:text-blue-800"
+              className="text-primary hover:text-primary/80"
             >
               11. Best Practices
             </a>
             <a
               href="#troubleshooting"
-              className="text-blue-600 hover:text-blue-800"
+              className="text-primary hover:text-primary/80"
             >
               12. Troubleshooting
             </a>
             <a
               href="#api-reference"
-              className="text-blue-600 hover:text-blue-800"
+              className="text-primary hover:text-primary/80"
             >
               13. API Reference
             </a>
@@ -111,7 +111,7 @@ export default function DocsPage() {
             <div className="prose max-w-none">
               <p className="text-muted-foreground mb-4">
                 Fargo Flags is a <strong>streamlined toolkit</strong> built on top of{" "}
-                <a href="https://flags-sdk.dev/" className="text-blue-600 hover:text-blue-800">
+                <a href="https://flags-sdk.dev/" className="text-primary hover:text-primary/80">
                   Vercel&apos;s Flags SDK
                 </a>{" "}
                 that adds enhanced developer experience, CLI tooling, and component registry distribution.
@@ -168,7 +168,7 @@ export default function DocsPage() {
               <code>npx shadcn@latest add https://fargo-flags.com/r/flags-core</code>
             </pre>
             
-            <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg mb-6">
+            <div className="bg-primary/10 border border-primary/20 p-4 rounded-lg mb-6">
               <h4 className="font-medium mb-2">📦 Core Installation Includes</h4>
               <ul className="text-sm space-y-1">
                 <li>• <code>src/lib/flags/kit.ts</code> - Core types and defineFlag helper</li>
@@ -207,7 +207,7 @@ export default function DocsPage() {
               <code>npx shadcn@latest add https://fargo-flags.com/r/flags-cli</code>
             </pre>
             
-            <div className="bg-green-50 border border-green-200 p-4 rounded-lg mb-4">
+            <div className="bg-primary/5 border border-primary/10 p-4 rounded-lg mb-4">
               <h4 className="font-medium mb-2">🛠️ CLI Installation Includes</h4>
               <ul className="text-sm space-y-1">
                 <li>• <code>scripts/create-flag.ts</code> - Interactive flag creation wizard</li>
@@ -216,7 +216,7 @@ export default function DocsPage() {
               </ul>
             </div>
 
-            <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg mb-6">
+            <div className="bg-primary/10 border border-primary/20 p-4 rounded-lg mb-6">
               <h4 className="font-medium mb-2">📋 Required Package.json Scripts</h4>
               <p className="text-sm text-muted-foreground mb-2">
                 After installing the CLI tools, add these scripts to your <code>package.json</code>:
@@ -259,7 +259,7 @@ export default function DocsPage() {
 }`}
             </pre>
 
-            <div className="bg-amber-50 border border-amber-200 p-4 rounded-lg">
+            <div className="bg-primary/5 border border-primary/10 p-4 rounded-lg">
               <h4 className="font-medium mb-2">⚠️ Important Notes</h4>
               <ul className="text-sm space-y-1">
                 <li>• The shadcn CLI cannot automatically update <code>package.json</code> scripts</li>
@@ -330,7 +330,7 @@ export default async function RootLayout({ children }) {
               This installs the flag creation wizard and consistency checker scripts.
             </p>
 
-            <div className="bg-amber-50 border border-amber-200 p-4 rounded-lg mb-4">
+            <div className="bg-primary/5 border border-primary/10 p-4 rounded-lg mb-4">
               <h4 className="font-medium mb-2">📝 Manual Step Required</h4>
               <p className="text-sm text-muted-foreground mb-2">
                 Add these scripts to your <code>package.json</code>:
@@ -472,7 +472,7 @@ export default defineFlag({
             </pre>
 
             <h3 className="text-lg font-semibold mb-2">Step-by-Step Process</h3>
-            <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg mb-4">
+            <div className="bg-primary/10 border border-primary/20 p-4 rounded-lg mb-4">
               <ol className="list-decimal pl-4 space-y-2 text-sm">
                 <li><strong>Gets all flag keys</strong> from your registry</li>
                 <li><strong>Runs in parallel</strong> - all flags resolve simultaneously for performance</li>
@@ -815,7 +815,7 @@ export default async function RootLayout({
                   including their decision logic:
                 </p>
 
-                <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg text-sm mb-4">
+                <div className="bg-primary/10 border border-primary/20 p-4 rounded-lg text-sm mb-4">
                   <h5 className="font-medium mb-2">Key Features:</h5>
                   <ul className="list-disc pl-4 space-y-1">
                     <li>
@@ -873,7 +873,7 @@ export default defineFlag({
                   based on their <code>client.public</code> setting:
                 </p>
 
-                <div className="bg-green-50 border border-green-200 p-4 rounded-lg text-sm mb-4">
+                <div className="bg-primary/5 border border-primary/10 p-4 rounded-lg text-sm mb-4">
                   <h5 className="font-medium mb-2">Security Features:</h5>
                   <ul className="list-disc pl-4 space-y-1">
                     <li>
@@ -1046,7 +1046,7 @@ export default async function RootLayout({ children }) {
                 </pre>
 
                 <h4 className="font-medium mb-2">Performance Considerations</h4>
-                <div className="bg-yellow-50 border border-yellow-200 p-4 rounded-lg text-sm">
+                <div className="bg-primary/5 border border-primary/10 p-4 rounded-lg text-sm">
                   <h5 className="font-medium mb-2">⚡ Optimization Tips:</h5>
                   <ul className="list-disc pl-4 space-y-1">
                     <li>
@@ -1124,7 +1124,7 @@ function TypeSafeExample() {
                 </pre>
 
                 <h4 className="font-medium mb-2">Best Practices</h4>
-                <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg text-sm">
+                <div className="bg-primary/10 border border-primary/20 p-4 rounded-lg text-sm">
                   <ul className="list-disc pl-4 space-y-1">
                     <li>
                       Use descriptive variable names that match the flag purpose
@@ -1290,7 +1290,7 @@ function Dashboard() {
                 </pre>
 
                 <h4 className="font-medium mb-2">Performance Considerations</h4>
-                <div className="bg-yellow-50 border border-yellow-200 p-4 rounded-lg text-sm">
+                <div className="bg-primary/5 border border-primary/10 p-4 rounded-lg text-sm">
                   <p className="font-medium mb-2">⚡ Performance Tips:</p>
                   <ul className="list-disc pl-4 space-y-1">
                     <li>
@@ -1480,7 +1480,7 @@ export default process.env.NODE_ENV === "development"
                 </pre>
 
                 <h4 className="font-medium mb-2">Testing Best Practices</h4>
-                <div className="bg-green-50 border border-green-200 p-4 rounded-lg text-sm">
+                <div className="bg-primary/5 border border-primary/10 p-4 rounded-lg text-sm">
                   <p className="font-medium mb-2">✅ Testing Guidelines:</p>
                   <ul className="list-disc pl-4 space-y-1">
                     <li>Test both enabled and disabled states for each flag</li>
@@ -1549,7 +1549,7 @@ function ConditionalFeatures() {
 }`}
                 </pre>
 
-                <div className="bg-amber-50 border border-amber-200 p-4 rounded-lg text-sm">
+                <div className="bg-primary/5 border border-primary/10 p-4 rounded-lg text-sm">
                   <p className="font-medium mb-2">
                     ⚠️ When to use useFlags vs useFlag:
                   </p>
@@ -1723,7 +1723,7 @@ export const WithFeatureDisabled = {
             </div>
 
             <h4 className="font-medium mb-2">What Gets Created</h4>
-            <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg mb-6">
+            <div className="bg-primary/10 border border-primary/20 p-4 rounded-lg mb-6">
               <h5 className="font-medium mb-2">Automatic File Generation</h5>
               <ul className="text-sm space-y-2">
                 <li>
@@ -1812,8 +1812,8 @@ export const WithFeatureDisabled = {
             </div>
 
             <h4 className="font-medium mb-2">Success Output</h4>
-            <pre className="bg-green-50 border border-green-200 p-4 rounded-lg text-sm mb-4">
-              <code className="text-green-800">✔ flags:check OK — 4 registered, 4 files, 3 client-exposed</code>
+            <pre className="bg-primary/5 border border-primary/10 p-4 rounded-lg text-sm mb-4">
+              <code className="text-primary">✔ flags:check OK — 4 registered, 4 files, 3 client-exposed</code>
             </pre>
 
             <h4 className="font-medium mb-2">Error Output</h4>
@@ -1909,7 +1909,7 @@ import { registry } from "../src/lib/flags/registry.config";
               <code>npx shadcn@latest add https://fargo-flags.com/r/flags-cli</code>
             </pre>
             
-            <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg mb-6">
+            <div className="bg-primary/10 border border-primary/20 p-4 rounded-lg mb-6">
               <h4 className="font-medium mb-2">📦 What Gets Installed</h4>
               <ul className="text-sm space-y-1">
                 <li>• <code>scripts/create-flag.ts</code> - Interactive flag creation wizard</li>
@@ -1950,38 +1950,38 @@ import { registry } from "../src/lib/flags/registry.config";
             <div className="bg-gray-50 p-4 rounded-lg mb-4">
               <div className="space-y-3 text-sm">
                 <div className="flex items-start gap-2">
-                  <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">1</span>
+                  <span className="bg-primary/20 text-primary px-2 py-1 rounded text-xs font-medium">1</span>
                   <span><strong>Flag Key:</strong> Enter kebab-case flag identifier (e.g., &quot;enable-new-dashboard&quot;)</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">2</span>
+                  <span className="bg-primary/20 text-primary px-2 py-1 rounded text-xs font-medium">2</span>
                   <span><strong>Value Type:</strong> Choose between boolean or string enum</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">3</span>
+                  <span className="bg-primary/20 text-primary px-2 py-1 rounded text-xs font-medium">3</span>
                   <span><strong>Enum Options:</strong> If enum, specify comma-separated values</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">4</span>
+                  <span className="bg-primary/20 text-primary px-2 py-1 rounded text-xs font-medium">4</span>
                   <span><strong>Client Exposure:</strong> Choose if flag should be available on client</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">5</span>
+                  <span className="bg-primary/20 text-primary px-2 py-1 rounded text-xs font-medium">5</span>
                   <span><strong>Serializer:</strong> Optional function to transform values for client</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">6</span>
+                  <span className="bg-primary/20 text-primary px-2 py-1 rounded text-xs font-medium">6</span>
                   <span><strong>Default Value:</strong> Set the fallback value</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">7</span>
+                  <span className="bg-primary/20 text-primary px-2 py-1 rounded text-xs font-medium">7</span>
                   <span><strong>Description:</strong> Optional human-readable description</span>
                 </div>
               </div>
             </div>
 
             <h4 className="font-medium mb-2">What the Wizard Does</h4>
-            <div className="bg-green-50 border border-green-200 p-4 rounded-lg mb-6">
+            <div className="bg-primary/5 border border-primary/10 p-4 rounded-lg mb-6">
               <ul className="text-sm space-y-1">
                 <li>✅ Creates flag file in <code>src/lib/flags/defs/</code></li>
                 <li>✅ Updates <code>registry.config.ts</code> with imports and entries</li>
@@ -2002,7 +2002,7 @@ import { registry } from "../src/lib/flags/registry.config";
             </pre>
 
             <h4 className="font-medium mb-2">What It Validates</h4>
-            <div className="bg-yellow-50 border border-yellow-200 p-4 rounded-lg mb-4">
+            <div className="bg-primary/5 border border-primary/10 p-4 rounded-lg mb-4">
               <ul className="text-sm space-y-1">
                 <li>🔍 Every <code>defs/*.flag.ts</code> file is imported in <code>registry.config.ts</code></li>
                 <li>🔍 All imports have corresponding entries in <code>flagSchemas</code> and <code>registry</code></li>
@@ -2099,7 +2099,7 @@ export const clientFlagKeys = [
               <code>pnpm flags:check</code>
             </pre>
 
-            <div className="bg-amber-50 border border-amber-200 p-4 rounded-lg">
+            <div className="bg-primary/5 border border-primary/10 p-4 rounded-lg">
               <h4 className="font-medium mb-2">💡 Pro Tips</h4>
               <ul className="text-sm space-y-1">
                 <li>• Use the wizard for speed and consistency</li>
@@ -2333,7 +2333,7 @@ export const clientFlagKeys = [
           <p className="text-muted-foreground">
             <Link
               href="/"
-              className="text-blue-600 hover:text-blue-800"
+              className="text-primary hover:text-primary/80"
             >
               ← Back to Demo
             </Link>

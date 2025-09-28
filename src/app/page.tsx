@@ -22,50 +22,71 @@ function InteractiveDemo({
   return (
     <>
       {/* Hero Section */}
-      <div className="mb-12 text-center">
-        <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-          Fargo Flags
-        </h1>
-        <p className="text-xl text-muted-foreground mb-6 max-w-2xl mx-auto">
-          Enhanced toolkit built on{" "}
-          <a href="https://flags-sdk.dev/" className="text-blue-600 hover:text-blue-800 underline">
-            Vercel&apos;s Flags SDK
-          </a>{" "}
-          with CLI tools, component registry, and streamlined developer experience.
-        </p>
-        <div className="flex gap-4 justify-center mb-6">
-          <div className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">
-            ✓ Built on Flags SDK
+      <div className="mb-16 text-center relative">
+        {/* Background gradient */}
+        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 rounded-3xl blur-3xl"></div>
+        
+        <div className="relative">
+          <h1 className="text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
+            Fargo Flags
+          </h1>
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
+            Enhanced toolkit built on{" "}
+            <a href="https://flags-sdk.dev/" className="text-primary hover:text-primary/80 underline underline-offset-4 decoration-2">
+              Vercel&apos;s Flags SDK
+            </a>{" "}
+            with CLI tools, component registry, and streamlined developer experience.
+          </p>
+          
+          {/* Feature badges */}
+          <div className="flex flex-wrap gap-3 justify-center mb-8">
+            <div className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium border border-primary/20 backdrop-blur-sm">
+              ✓ Built on Flags SDK
+            </div>
+            <div className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium border border-primary/20 backdrop-blur-sm">
+              ✓ Enhanced DX
+            </div>
+            <div className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium border border-primary/20 backdrop-blur-sm">
+              ✓ CLI Tools
+            </div>
           </div>
-          <div className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
-            ✓ Enhanced DX
+          
+          {/* CTA buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a 
+              href="/docs" 
+              className="group px-8 py-3 bg-primary text-primary-foreground rounded-xl hover:bg-primary/90 transition-all duration-200 font-medium shadow-lg hover:shadow-xl hover:scale-105 flex items-center justify-center gap-2"
+            >
+              <span className="text-lg">📚</span>
+              View Documentation
+              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+            <a 
+              href="https://github.com/gfargo/fargo-flags" 
+              className="group px-8 py-3 border-2 border-primary/20 rounded-xl hover:bg-primary/5 transition-all duration-200 font-medium hover:border-primary/40 flex items-center justify-center gap-2"
+            >
+              <span className="text-lg">⭐</span>
+              Star on GitHub
+              <svg className="w-4 h-4 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </a>
           </div>
-          <div className="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">
-            ✓ CLI Tools
-          </div>
-        </div>
-        <div className="flex gap-4 justify-center">
-          <a 
-            href="/docs" 
-            className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
-          >
-            📚 View Documentation
-          </a>
-          <a 
-            href="https://github.com/gfargo/fargo-flags" 
-            className="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors font-medium"
-          >
-            ⭐ Star on GitHub
-          </a>
         </div>
       </div>
 
       {/* Interactive Demo Section */}
-      <section className="border rounded-lg p-6 mb-8">
-        <h2 className="text-2xl font-semibold mb-6">🚀 Interactive Feature Flags Demo</h2>
-        <p className="text-muted-foreground mb-6">
-          Try changing the flag values below to see how they instantly affect the UI components.
-        </p>
+      <section className="border-2 border-primary/10 rounded-2xl p-8 mb-12 bg-gradient-to-br from-primary/5 via-background to-primary/5 backdrop-blur-sm">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+            🚀 Interactive Feature Flags Demo
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Try changing the flag values below to see how they instantly affect the UI components.
+          </p>
+        </div>
         
         <div className="space-y-8">
           {/* AI Assistant Demo */}
@@ -98,7 +119,7 @@ function InteractiveDemo({
                         🖨️ Print
                       </button>
                       <Flag when="enable-ai-assistant-in-pdf-toolbar">
-                        <button className="px-3 py-1 bg-blue-500 hover:bg-blue-600 text-white rounded text-sm animate-pulse">
+                        <button className="px-3 py-1 bg-primary hover:bg-primary/90 text-primary-foreground rounded text-sm animate-pulse">
                           🤖 AI Assistant
                         </button>
                       </Flag>
@@ -106,12 +127,12 @@ function InteractiveDemo({
                   </div>
                   <div className="text-sm text-muted-foreground">
                     <Flag when="enable-ai-assistant-in-pdf-toolbar">
-                      <div className="p-3 bg-blue-50 border border-blue-200 rounded">
+                      <div className="p-3 bg-primary/10 border border-primary/20 rounded">
                         ✨ AI Assistant is ready to help analyze this document, extract key information, and answer questions.
                       </div>
                     </Flag>
                     <Flag when="enable-ai-assistant-in-pdf-toolbar" not={true}>
-                      <div className="p-3 bg-gray-50 border border-gray-200 rounded">
+                      <div className="p-3 bg-muted border border-border rounded">
                         Standard PDF viewer without AI-powered features.
                       </div>
                     </Flag>
@@ -122,7 +143,7 @@ function InteractiveDemo({
             
             <div className="space-y-4">
               <h4 className="font-medium">🎛️ Try It Yourself</h4>
-              <div className="p-4 border rounded-lg bg-blue-50">
+              <div className="p-4 border rounded-lg bg-primary/5">
                 <label className="block text-sm font-medium mb-2">
                   Toggle AI Assistant:
                 </label>
@@ -134,8 +155,8 @@ function InteractiveDemo({
                     }))}
                     className={`px-4 py-2 rounded text-sm font-medium transition-colors ${
                       !showAssistant 
-                        ? 'bg-gray-600 text-white' 
-                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                        ? 'bg-muted-foreground text-background' 
+                        : 'bg-muted text-muted-foreground hover:bg-muted/80'
                     }`}
                   >
                     Disabled
@@ -147,8 +168,8 @@ function InteractiveDemo({
                     }))}
                     className={`px-4 py-2 rounded text-sm font-medium transition-colors ${
                       showAssistant 
-                        ? 'bg-blue-600 text-white' 
-                        : 'bg-blue-200 text-blue-700 hover:bg-blue-300'
+                        ? 'bg-primary text-primary-foreground' 
+                        : 'bg-primary/20 text-primary hover:bg-primary/30'
                     }`}
                   >
                     Enabled
@@ -166,7 +187,7 @@ function InteractiveDemo({
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <h3 className="font-medium text-lg">📄 Pagination Layout</h3>
-                <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
+                <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
                   {paginationLocation.toUpperCase()}
                 </span>
               </div>
@@ -178,13 +199,13 @@ function InteractiveDemo({
                 
                 <div className="border rounded-lg p-4 bg-background space-y-3">
                   <Flag when="pagination-ui-location" is="top">
-                    <div className="p-3 bg-green-50 border border-green-200 rounded text-center">
+                    <div className="p-3 bg-primary/10 border border-primary/20 rounded text-center">
                       <div className="flex items-center justify-center gap-2 text-sm">
-                        <button className="px-2 py-1 bg-white border rounded">←</button>
-                        <span className="px-2 py-1 bg-blue-500 text-white rounded">1</span>
-                        <span className="px-2 py-1 bg-white border rounded">2</span>
-                        <span className="px-2 py-1 bg-white border rounded">3</span>
-                        <button className="px-2 py-1 bg-white border rounded">→</button>
+                        <button className="px-2 py-1 bg-background border rounded">←</button>
+                        <span className="px-2 py-1 bg-primary text-primary-foreground rounded">1</span>
+                        <span className="px-2 py-1 bg-background border rounded">2</span>
+                        <span className="px-2 py-1 bg-background border rounded">3</span>
+                        <button className="px-2 py-1 bg-background border rounded">→</button>
                       </div>
                     </div>
                   </Flag>
@@ -201,33 +222,33 @@ function InteractiveDemo({
                     </div>
                   </Flag>
 
-                  <div className="p-6 border-2 border-dashed border-gray-300 rounded text-center space-y-2">
-                    <div className="p-2 bg-gray-50 rounded text-sm">📋 Search Result 1</div>
-                    <div className="p-2 bg-gray-50 rounded text-sm">📋 Search Result 2</div>
-                    <div className="p-2 bg-gray-50 rounded text-sm">📋 Search Result 3</div>
+                  <div className="p-6 border-2 border-dashed border-border rounded text-center space-y-2">
+                    <div className="p-2 bg-muted rounded text-sm">📋 Search Result 1</div>
+                    <div className="p-2 bg-muted rounded text-sm">📋 Search Result 2</div>
+                    <div className="p-2 bg-muted rounded text-sm">📋 Search Result 3</div>
                     <div className="text-xs text-muted-foreground">... and 47 more results</div>
                   </div>
 
                   <Flag when="pagination-ui-location" is="bottom">
-                    <div className="p-3 bg-green-50 border border-green-200 rounded text-center">
+                    <div className="p-3 bg-primary/10 border border-primary/20 rounded text-center">
                       <div className="flex items-center justify-center gap-2 text-sm">
-                        <button className="px-2 py-1 bg-white border rounded">←</button>
-                        <span className="px-2 py-1 bg-blue-500 text-white rounded">1</span>
-                        <span className="px-2 py-1 bg-white border rounded">2</span>
-                        <span className="px-2 py-1 bg-white border rounded">3</span>
-                        <button className="px-2 py-1 bg-white border rounded">→</button>
+                        <button className="px-2 py-1 bg-background border rounded">←</button>
+                        <span className="px-2 py-1 bg-primary text-primary-foreground rounded">1</span>
+                        <span className="px-2 py-1 bg-background border rounded">2</span>
+                        <span className="px-2 py-1 bg-background border rounded">3</span>
+                        <button className="px-2 py-1 bg-background border rounded">→</button>
                       </div>
                     </div>
                   </Flag>
                   
                   <Flag when="pagination-ui-location" is="both">
-                    <div className="p-3 bg-green-50 border border-green-200 rounded text-center">
+                    <div className="p-3 bg-primary/10 border border-primary/20 rounded text-center">
                       <div className="flex items-center justify-center gap-2 text-sm">
-                        <button className="px-2 py-1 bg-white border rounded">←</button>
-                        <span className="px-2 py-1 bg-blue-500 text-white rounded">1</span>
-                        <span className="px-2 py-1 bg-white border rounded">2</span>
-                        <span className="px-2 py-1 bg-white border rounded">3</span>
-                        <button className="px-2 py-1 bg-white border rounded">→</button>
+                        <button className="px-2 py-1 bg-background border rounded">←</button>
+                        <span className="px-2 py-1 bg-primary text-primary-foreground rounded">1</span>
+                        <span className="px-2 py-1 bg-background border rounded">2</span>
+                        <span className="px-2 py-1 bg-background border rounded">3</span>
+                        <button className="px-2 py-1 bg-background border rounded">→</button>
                       </div>
                     </div>
                   </Flag>
@@ -237,7 +258,7 @@ function InteractiveDemo({
             
             <div className="space-y-4">
               <h4 className="font-medium">🎛️ Try It Yourself</h4>
-              <div className="p-4 border rounded-lg bg-blue-50">
+              <div className="p-4 border rounded-lg bg-primary/5">
                 <label className="block text-sm font-medium mb-2">
                   Change Pagination Location:
                 </label>
@@ -249,8 +270,8 @@ function InteractiveDemo({
                     }))}
                     className={`w-full px-4 py-2 rounded text-sm font-medium transition-colors ${
                       paginationLocation === "top"
-                        ? 'bg-blue-600 text-white' 
-                        : 'bg-blue-200 text-blue-700 hover:bg-blue-300'
+                        ? 'bg-primary text-primary-foreground' 
+                        : 'bg-primary/20 text-primary hover:bg-primary/30'
                     }`}
                   >
                     Top Only
@@ -262,8 +283,8 @@ function InteractiveDemo({
                     }))}
                     className={`w-full px-4 py-2 rounded text-sm font-medium transition-colors ${
                       paginationLocation === "bottom"
-                        ? 'bg-blue-600 text-white' 
-                        : 'bg-blue-200 text-blue-700 hover:bg-blue-300'
+                        ? 'bg-primary text-primary-foreground' 
+                        : 'bg-primary/20 text-primary hover:bg-primary/30'
                     }`}
                   >
                     Bottom Only
@@ -275,8 +296,8 @@ function InteractiveDemo({
                     }))}
                     className={`w-full px-4 py-2 rounded text-sm font-medium transition-colors ${
                       paginationLocation === "both"
-                        ? 'bg-blue-600 text-white' 
-                        : 'bg-blue-200 text-blue-700 hover:bg-blue-300'
+                        ? 'bg-primary text-primary-foreground' 
+                        : 'bg-primary/20 text-primary hover:bg-primary/30'
                     }`}
                   >
                     Top & Bottom
@@ -294,7 +315,7 @@ function InteractiveDemo({
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <h3 className="font-medium text-lg">🎨 Theme Mode</h3>
-                <span className="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">
+                <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
                   {themeMode.toUpperCase()}
                 </span>
               </div>
@@ -346,7 +367,7 @@ function InteractiveDemo({
             
             <div className="space-y-4">
               <h4 className="font-medium">🎛️ Try It Yourself</h4>
-              <div className="p-4 border rounded-lg bg-purple-50">
+              <div className="p-4 border rounded-lg bg-primary/5">
                 <label className="block text-sm font-medium mb-2">
                   Change Theme Mode:
                 </label>
@@ -358,8 +379,8 @@ function InteractiveDemo({
                     }))}
                     className={`w-full px-4 py-2 rounded text-sm font-medium transition-colors ${
                       themeMode === "light"
-                        ? 'bg-yellow-500 text-white' 
-                        : 'bg-yellow-100 text-yellow-700 hover:bg-yellow-200'
+                        ? 'bg-primary text-primary-foreground' 
+                        : 'bg-primary/20 text-primary hover:bg-primary/30'
                     }`}
                   >
                     ☀️ Light Mode
@@ -371,8 +392,8 @@ function InteractiveDemo({
                     }))}
                     className={`w-full px-4 py-2 rounded text-sm font-medium transition-colors ${
                       themeMode === "dark"
-                        ? 'bg-gray-800 text-white' 
-                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                        ? 'bg-primary text-primary-foreground' 
+                        : 'bg-primary/20 text-primary hover:bg-primary/30'
                     }`}
                   >
                     🌙 Dark Mode
@@ -384,8 +405,8 @@ function InteractiveDemo({
                     }))}
                     className={`w-full px-4 py-2 rounded text-sm font-medium transition-colors ${
                       themeMode === "auto"
-                        ? 'bg-purple-600 text-white' 
-                        : 'bg-purple-200 text-purple-700 hover:bg-purple-300'
+                        ? 'bg-primary text-primary-foreground' 
+                        : 'bg-primary/20 text-primary hover:bg-primary/30'
                     }`}
                   >
                     🔄 Auto Mode
@@ -401,8 +422,8 @@ function InteractiveDemo({
       </section>
 
       {/* Component Library Demo */}
-      <section className="border rounded-lg p-6 mb-8">
-        <h2 className="text-2xl font-semibold mb-6">🧩 Component Library</h2>
+      <section className="border-2 border-primary/10 rounded-2xl p-8 mb-12 bg-card/50 backdrop-blur-sm">
+        <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">🧩 Component Library</h2>
         <p className="text-muted-foreground mb-6">
           Fargo Flags comes with several React components to make working with feature flags seamless.
         </p>
@@ -496,7 +517,7 @@ function InteractiveDemo({
           </div>
         </div>
 
-        <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+        <div className="mt-6 p-4 bg-primary/10 border border-primary/20 rounded-lg">
           <h4 className="font-medium mb-2">💡 Pro Tip</h4>
           <p className="text-sm text-muted-foreground">
             All components are fully typed! Your IDE will provide autocomplete for flag names and values, 
@@ -506,8 +527,8 @@ function InteractiveDemo({
       </section>
 
       {/* CLI Tools Showcase */}
-      <section className="border rounded-lg p-6 mb-8">
-        <h2 className="text-2xl font-semibold mb-4">🛠️ Developer Tools</h2>
+      <section className="border-2 border-primary/10 rounded-2xl p-8 mb-12 bg-card/50 backdrop-blur-sm">
+        <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">🛠️ Developer Tools</h2>
         <p className="text-muted-foreground mb-6">
           Fargo Flags includes powerful CLI tools distributed via the shadcn registry to streamline your development workflow.
         </p>
@@ -531,9 +552,9 @@ function InteractiveDemo({
               </div>
             </div>
             <div className="flex gap-2 text-xs">
-              <span className="px-2 py-1 bg-green-100 text-green-800 rounded">Auto-generates files</span>
-              <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded">Updates registry</span>
-              <span className="px-2 py-1 bg-purple-100 text-purple-800 rounded">Type-safe</span>
+              <span className="px-2 py-1 bg-primary/10 text-primary rounded">Auto-generates files</span>
+              <span className="px-2 py-1 bg-primary/10 text-primary rounded">Updates registry</span>
+              <span className="px-2 py-1 bg-primary/10 text-primary rounded">Type-safe</span>
             </div>
           </div>
           
@@ -552,41 +573,41 @@ function InteractiveDemo({
               </div>
             </div>
             <div className="flex gap-2 text-xs">
-              <span className="px-2 py-1 bg-green-100 text-green-800 rounded">CI/CD ready</span>
-              <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded">Catches drift</span>
-              <span className="px-2 py-1 bg-purple-100 text-purple-800 rounded">Zero config</span>
+              <span className="px-2 py-1 bg-primary/10 text-primary rounded">CI/CD ready</span>
+              <span className="px-2 py-1 bg-primary/10 text-primary rounded">Catches drift</span>
+              <span className="px-2 py-1 bg-primary/10 text-primary rounded">Zero config</span>
             </div>
           </div>
         </div>
 
-        <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+        <div className="mt-6 p-4 bg-primary/10 border border-primary/20 rounded-lg">
           <h4 className="font-medium mb-2">📦 Easy Installation</h4>
           <div className="grid md:grid-cols-2 gap-4 text-sm">
             <div>
               <p className="font-medium mb-1">Install via shadcn registry:</p>
-              <code className="text-xs bg-white px-2 py-1 rounded border">npx shadcn@latest add https://fargo-flags.com/r/flags-cli</code>
+              <code className="text-xs bg-background px-2 py-1 rounded border">npx shadcn@latest add https://fargo-flags.com/r/flags-cli</code>
             </div>
             <div>
               <p className="font-medium mb-1">Add to package.json:</p>
-              <code className="text-xs bg-white px-2 py-1 rounded border">&quot;flags:new&quot;: &quot;tsx scripts/create-flag.ts&quot;</code>
+              <code className="text-xs bg-background px-2 py-1 rounded border">&quot;flags:new&quot;: &quot;tsx scripts/create-flag.ts&quot;</code>
             </div>
           </div>
         </div>
       </section>
 
       {/* Built on Flags SDK */}
-      <section className="border rounded-lg p-6 mb-8">
-        <h2 className="text-2xl font-semibold mb-4">🤝 Built on Vercel&apos;s Flags SDK</h2>
+      <section className="border-2 border-primary/10 rounded-2xl p-8 mb-12 bg-card/50 backdrop-blur-sm">
+        <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">🤝 Built on Vercel&apos;s Flags SDK</h2>
         <p className="text-muted-foreground mb-6">
           Fargo Flags is a <strong>thin layer of abstraction</strong> that enhances{" "}
-          <a href="https://flags-sdk.dev/" className="text-blue-600 hover:text-blue-800 underline">
+          <a href="https://flags-sdk.dev/" className="text-primary hover:text-primary/80 underline">
             Vercel&apos;s Flags SDK
           </a>{" "}
           with streamlined tooling and distribution. We embrace the same core principles while making them easier to adopt and scale.
         </p>
         
         <div className="grid md:grid-cols-2 gap-6">
-          <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+          <div className="p-4 bg-primary/10 border border-primary/20 rounded-lg">
             <h3 className="font-medium mb-3">🏗️ Flags SDK Foundation</h3>
             <ul className="text-sm space-y-2 text-muted-foreground">
               <li className="flex items-start gap-2">
@@ -608,7 +629,7 @@ function InteractiveDemo({
             </ul>
           </div>
           
-          <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+          <div className="p-4 bg-primary/5 border border-primary/10 rounded-lg">
             <h3 className="font-medium mb-3">🚀 Fargo Enhancements</h3>
             <ul className="text-sm space-y-2 text-muted-foreground">
               <li className="flex items-start gap-2">
@@ -635,7 +656,7 @@ function InteractiveDemo({
           </div>
         </div>
 
-        <div className="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+        <div className="mt-6 p-4 bg-primary/5 border border-primary/10 rounded-lg">
           <h4 className="font-medium mb-2">💡 Why This Approach?</h4>
           <p className="text-sm text-muted-foreground">
             The Flags SDK provides excellent architectural patterns, but setting up the boilerplate and maintaining consistency across a growing codebase can be tedious. 
@@ -645,8 +666,8 @@ function InteractiveDemo({
       </section>
 
       {/* Key Features */}
-      <section className="border rounded-lg p-6 mb-8">
-        <h2 className="text-2xl font-semibold mb-4">✨ Key Features</h2>
+      <section className="border-2 border-primary/10 rounded-2xl p-8 mb-12 bg-card/50 backdrop-blur-sm">
+        <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">✨ Key Features</h2>
         
         <div className="grid md:grid-cols-3 gap-4">
           <div className="p-4 border rounded-lg">
@@ -694,8 +715,8 @@ function InteractiveDemo({
       </section>
 
       {/* resolveAllFlags Deep Dive */}
-      <section className="border rounded-lg p-6 mb-8">
-        <h2 className="text-2xl font-semibold mb-4">⚡ How resolveAllFlags Works</h2>
+      <section className="border-2 border-primary/10 rounded-2xl p-8 mb-12 bg-card/50 backdrop-blur-sm">
+        <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">⚡ How resolveAllFlags Works</h2>
         <p className="text-muted-foreground mb-6">
           The server-side engine that evaluates all your feature flags and returns their resolved values.
         </p>
@@ -730,19 +751,19 @@ function InteractiveDemo({
           <div>
             <h3 className="font-medium mb-3">🎯 Usage Patterns</h3>
             <div className="space-y-3">
-              <div className="p-3 bg-blue-50 border border-blue-200 rounded">
+              <div className="p-3 bg-primary/10 border border-primary/20 rounded">
                 <h4 className="font-medium text-sm mb-1">Basic Usage</h4>
                 <code className="text-xs">await resolveAllFlags()</code>
                 <p className="text-xs text-muted-foreground mt-1">Simple flags using defaultValue</p>
               </div>
               
-              <div className="p-3 bg-green-50 border border-green-200 rounded">
+              <div className="p-3 bg-primary/10 border border-primary/20 rounded">
                 <h4 className="font-medium text-sm mb-1">With Context</h4>
                 <code className="text-xs">await resolveAllFlags({`{ getUser, getWorkspace }`})</code>
                 <p className="text-xs text-muted-foreground mt-1">Personalized flags with user data</p>
               </div>
               
-              <div className="p-3 bg-purple-50 border border-purple-200 rounded">
+              <div className="p-3 bg-primary/10 border border-primary/20 rounded">
                 <h4 className="font-medium text-sm mb-1">In API Routes</h4>
                 <code className="text-xs">const flags = await resolveAllFlags(ctx)</code>
                 <p className="text-xs text-muted-foreground mt-1">Server-side flag access</p>
@@ -751,7 +772,7 @@ function InteractiveDemo({
           </div>
         </div>
         
-        <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+        <div className="mt-6 p-4 bg-primary/5 border border-primary/10 rounded-lg">
           <h4 className="font-medium mb-2">🔒 Security & Performance</h4>
           <div className="grid md:grid-cols-2 gap-4 text-sm">
             <div>
@@ -767,8 +788,8 @@ function InteractiveDemo({
       </section>
 
       {/* Architecture Overview */}
-      <section className="border rounded-lg p-6 mb-8">
-        <h2 className="text-2xl font-semibold mb-4">🏗️ Architecture</h2>
+      <section className="border-2 border-primary/10 rounded-2xl p-8 mb-12 bg-card/50 backdrop-blur-sm">
+        <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">🏗️ Architecture</h2>
         
         <div className="grid md:grid-cols-2 gap-6">
           <div>
@@ -818,8 +839,8 @@ components/flags/
       </section>
 
       {/* Getting Started */}
-      <section className="border rounded-lg p-6 mb-8">
-        <h2 className="text-2xl font-semibold mb-4">🚀 Getting Started</h2>
+      <section className="border-2 border-primary/10 rounded-2xl p-8 mb-12 bg-card/50 backdrop-blur-sm">
+        <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">🚀 Getting Started</h2>
         
         <div className="grid md:grid-cols-2 gap-6">
           <div>
@@ -873,8 +894,8 @@ components/flags/
       </section>
 
       {/* Code Examples */}
-      <section className="border rounded-lg p-6">
-        <h2 className="text-2xl font-semibold mb-4">💻 Code Examples</h2>
+      <section className="border-2 border-primary/10 rounded-2xl p-8 bg-card/50 backdrop-blur-sm">
+        <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">💻 Code Examples</h2>
         
         <div className="space-y-6">
           <div>
@@ -993,12 +1014,14 @@ export default function Home() {
   });
 
   return (
-    <div className="font-sans min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="max-w-6xl mx-auto">
-        <FlagsTestProvider overrides={overrides}>
-          <InteractiveDemo setOverrides={setOverrides} />
-        </FlagsTestProvider>
-      </main>
+    <div className="font-sans min-h-screen bg-gradient-to-br from-background via-primary/5 to-background">
+      <div className="p-8 pb-20 gap-16 sm:p-20">
+        <main className="max-w-7xl mx-auto">
+          <FlagsTestProvider overrides={overrides}>
+            <InteractiveDemo setOverrides={setOverrides} />
+          </FlagsTestProvider>
+        </main>
+      </div>
     </div>
   );
 }
