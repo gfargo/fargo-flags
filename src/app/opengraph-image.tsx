@@ -94,7 +94,7 @@ export default async function Image() {
               marginBottom: 30,
             }}
           >
-            Enhanced Feature Flags Toolkit Built on Vercel's Flags SDK
+            Enhanced Feature Flags Toolkit Built on Vercels Flags SDK
           </div>
           
           {/* Features */}
