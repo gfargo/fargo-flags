@@ -13,7 +13,7 @@
   "files": [
     {
       "type": "registry:lib",
-      "path": "src/lib/flags/kit.ts",
+      "path": "src/ib/flags/kit.ts",
       "target": "@/lib/flags/kit.ts",
       "content": ""
     },

@@ -197,7 +197,7 @@ export default function DocsClient() {
                   </li>
                   <li>
                     <strong>Component registry distribution:</strong> Install
-                    via shadcn-style commands
+                    via shadcn/ui-style commands
                   </li>
                   <li>
                     <strong>Enhanced React integration:</strong> Providers,
@@ -2159,7 +2159,7 @@ import { registry } from "../src/lib/flags/registry.config";
               <p className="text-muted-foreground mb-6">
                 Fargo Flags includes powerful CLI tools to streamline flag
                 creation and maintenance. These tools are distributed via the
-                shadcn-style component registry.
+                shadcn/ui-style component registry.
               </p>
 
               <h3 className="text-lg font-semibold mb-2">Installation</h3>

@@ -1,6 +1,20 @@
 # Fargo Flags ⛳️
 
-A **streamlined toolkit** built on top of [Vercel's Flags SDK](https://flags-sdk.dev/) that adds **shadcn-style component registry distribution**, **interactive CLI tools**, and **enhanced developer experience** for type-safe feature flags in Next.js.
+A **streamlined toolkit** built on top of [Vercel's Flags SDK](https://flags-sdk.dev/) that adds **shadcn/ui-compatible component registry distribution**, **interactive CLI tools**, and **enhanced developer experience** for type-safe feature flags in Next.js.
+
+## 📚 Table of Contents
+
+- Overview
+- What We Add
+- Quick Start
+- Registry Components
+- Project Structure
+- CLI Tools
+- Documentation
+- Limitations & Gotchas
+- FAQ
+- Contributing
+- License
 
 ## ✨ What Fargo Flags Adds to Vercel's Flags SDK
 
@@ -9,7 +23,7 @@ While [Vercel's Flags SDK](https://flags-sdk.dev/) provides the solid foundation
 - 🎯 **One-file-per-flag** architecture with individual flag definitions
 - 🛠️ **Interactive CLI wizard** - guided flag creation with automatic registry updates
 - 🔍 **Consistency checker** - validate flag registry integrity in CI/CD
-- 📦 **shadcn-style registry** - drop-in installation via component registry
+- 📦 **shadcn/ui-compatible registry** - drop-in installation via component registry
 - 🧪 **Enhanced testing** - easy flag overrides for tests and Storybook
 - 🎨 **React components** - `<Flag>` conditional rendering and providers
 - 📚 **Comprehensive docs** - interactive demo and complete usage guide
@@ -30,12 +44,50 @@ While the Flags SDK provides the solid foundation, Fargo Flags makes it **easier
 
 - **Interactive CLI wizard** for creating flags without manual boilerplate
 - **Automatic registry management** - no need to manually maintain imports
-- **Component registry distribution** - install via shadcn-style commands
+- **Component registry distribution** - install via shadcn/ui-style commands
 - **Enhanced React integration** - providers, hooks, and conditional components
 - **Testing utilities** - easy flag overrides for development and QA
 - **Consistency validation** - catch configuration drift in CI/CD
 
 Think of it as **"Flags SDK with batteries included"** - same great foundation, enhanced developer experience.
+
+## 🧭 Architecture
+
+```
+┌──────────────────────┐     define one file per flag     ┌──────────────────────────┐
+│  src/lib/flags/defs  │ ───────────────────────────────▶ │  src/lib/flags/defs/*.ts │
+└──────────────────────┘                                  └──────────────────────────┘
+             │                            wizard updates                │
+             │                        (no codegen/build)                ▼
+             │                                               ┌──────────────────────────┐
+             └──────────────────────────────────────────────▶│  src/lib/flags/registry │
+                                                             │       .config.ts        │
+                                                             └──────────────────────────┘
+                                                                          │
+                                                         server resolves  │  all
+                                                                          ▼
+                                                             ┌──────────────────────────┐
+                                                             │ resolveAllFlags(ctx)     │
+                                                             └──────────────────────────┘
+                                                                          │
+                                              filter client-safe keys     │
+                                                                          ▼
+                                                             ┌──────────────────────────┐
+                                                             │ pickClientFlags()        │
+                                                             └──────────────────────────┘
+                                                                          │
+                                                        hydrate into React context
+                                                                          ▼
+                                                             ┌──────────────────────────┐
+                                                             │ <FlagsProvider>          │
+                                                             └──────────────────────────┘
+                                                                          │
+                                                  use in components       │
+                                                                          ▼
+                                    ┌────────────────────────┐     ┌────────────────────┐
+                                    │ useFlag('key')         │     │ <Flag when="key"/> │
+                                    └────────────────────────┘     └────────────────────┘
+```
 
 ## 🚀 Quick Start
 
@@ -121,9 +173,9 @@ function MyComponent() {
 }
 ```
 
-## � Registtry Components
+## 📦 Registry Components
 
-Fargo Flags follows the shadcn component registry pattern for easy installation:
+Fargo Flags follows the shadcn/ui component registry pattern for easy installation:
 
 | Component | Description | Install Command |
 |-----------|-------------|-----------------|
@@ -131,6 +183,32 @@ Fargo Flags follows the shadcn component registry pattern for easy installation:
 | **flags-flag** | `<Flag>` conditional rendering component | `npx shadcn@latest add https://flags.griffen.codes/r/flags-flag` |
 | **flags-test-provider** | Testing utilities for overrides | `npx shadcn@latest add https://flags.griffen.codes/r/flags-test-provider` |
 | **flags-cli** | Interactive wizard and consistency checker | `npx shadcn@latest add https://flags.griffen.codes/r/flags-cli` |
+
+## ⚠️ Limitations & Gotchas
+
+- Server-only logic: Flag decision functions run on the server. Avoid client-only APIs in `decide()`.
+- No call-site arguments: Flags are called by key; input comes from the provided context only.
+- Client exposure: Only keys marked as public are sent to the client via `pickClientFlags()`.
+- Schema required: Every flag must have a Zod schema and a `defaultValue` that conforms to it.
+
+## ❓ FAQ
+
+- What frameworks does this target?
+  - Next.js App Router. Other environments can adapt the patterns, but examples focus on Next.js.
+- Is this a replacement for Vercel’s Flags SDK?
+  - No. It’s a thin layer on top that adds CLI workflows, a component registry, and a better DX.
+- Can I remove Fargo Flags later?
+  - Yes. Your flags follow the same patterns; remove the CLI and maintain the registry manually.
+- Does it require a build step?
+  - No. The registry uses checked-in static imports that your app consumes directly.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please open issues or pull requests on GitHub. For larger changes, file an issue first to discuss scope and approach.
+
+## 📄 License
+
+MIT — see `LICENSE` in the repository.
 
 ## 📁 Project Structure
 
