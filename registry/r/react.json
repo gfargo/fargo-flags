@@ -9,7 +9,7 @@
     "tailwind-merge@^2.5.4"
   ],
   "registryDependencies": [
-    "http://localhost:3000/api/registry/r/core"
+    "http://localhost:3001/r/core"
   ],
   "files": [
     {

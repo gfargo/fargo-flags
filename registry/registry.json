@@ -1,33 +1,33 @@
 {
   "registry": [
     {
-      "name": "fargo-flags-core",
-      "item": "http://localhost:3000/api/registry/r/core",
-      "file": "r/core.json",
+      "name": "flags-core",
+      "item": "https://flags.griffen.codes/r/flags-core",
+      "file": "r/flags-core.json",
       "type": "registry:lib"
     },
     {
-      "name": "fargo-flags-react",
-      "item": "http://localhost:3000/api/registry/r/react",
-      "file": "r/react.json",
+      "name": "flags-flag",
+      "item": "https://flags.griffen.codes/r/flags-flag",
+      "file": "r/flags-flag.json",
       "type": "registry:component"
     },
     {
-      "name": "fargo-flags-testing",
-      "item": "http://localhost:3000/api/registry/r/testing",
-      "file": "r/testing.json",
+      "name": "flags-test-provider",
+      "item": "https://flags.griffen.codes/r/flags-test-provider",
+      "file": "r/flags-test-provider.json",
       "type": "registry:lib"
     },
     {
-      "name": "fargo-flags-cli",
-      "item": "http://localhost:3000/api/registry/r/cli",
-      "file": "r/cli.json",
+      "name": "flags-cli",
+      "item": "https://flags.griffen.codes/r/flags-cli",
+      "file": "r/flags-cli.json",
       "type": "registry:lib"
     },
     {
-      "name": "fargo-flags-complete",
-      "item": "http://localhost:3000/api/registry/r/complete",
-      "file": "r/complete.json",
+      "name": "flags-complete",
+      "item": "https://flags.griffen.codes/r/flags-complete",
+      "file": "r/flags-complete.json",
       "type": "registry:lib"
     }
   ]

@@ -1,5 +1,5 @@
 {
-  "name": "fargo-flags-cli",
+  "name": "flags-cli",
   "type": "registry:lib",
   "dependencies": [
     "react@^19.1.0",
@@ -13,7 +13,7 @@
     "prettier@^3.4.2"
   ],
   "registryDependencies": [
-    "http://localhost:3001/r/core"
+    "https://flags.griffen.codes/r/flags-core"
   ],
   "files": [
     {

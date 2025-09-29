@@ -1,6 +1,6 @@
 export default {
   outDir: "registry",
-  baseUrl: process.env.NEXT_PUBLIC_REGISTRY_URL || "http://localhost:3000/api/registry",
+  baseUrl: process.env.NEXT_PUBLIC_REGISTRY_URL || "https://flags.griffen.codes",
   
   // Global dependencies shared across components
   defaults: {
@@ -35,8 +35,8 @@ export default {
   // Component definitions
   items: [
     {
-      name: "fargo-flags-core",
-      fileName: "core.json",
+      name: "flags-core",
+      fileName: "flags-core.json",
       type: "registry:lib",
       dependencies: {
         "zod": "^3.22.0"
@@ -45,6 +45,7 @@ export default {
         /^src\/lib\/flags\/kit\.ts$/,
         /^src\/lib\/flags\/runtime\.ts$/,
         /^src\/lib\/utils\.ts$/,
+        /^src\/components\/flags\/flags-provider\.tsx$/,
       ],
       exclude: [
         /^src\/lib\/flags\/registry\.config\.ts$/,
@@ -53,30 +54,26 @@ export default {
       registryDependencies: [],
     },
     {
-      name: "fargo-flags-react",
-      fileName: "react.json",
+      name: "flags-flag",
+      fileName: "flags-flag.json",
       type: "registry:component",
       include: [
-        /^src\/components\/flags\/flags-provider\.tsx$/,
         /^src\/components\/flags\/flag\.tsx$/,
       ],
-      exclude: [
-        /^src\/components\/flags\/flags-test-provider\.tsx$/,
-      ],
-      registryDependencies: ["core"],
+      registryDependencies: ["flags-core"],
     },
     {
-      name: "fargo-flags-testing",
-      fileName: "testing.json",
+      name: "flags-test-provider",
+      fileName: "flags-test-provider.json",
       type: "registry:lib",
       include: [
         /^src\/components\/flags\/flags-test-provider\.tsx$/,
       ],
-      registryDependencies: ["core", "react"],
+      registryDependencies: ["flags-core"],
     },
     {
-      name: "fargo-flags-cli",
-      fileName: "cli.json",
+      name: "flags-cli",
+      fileName: "flags-cli.json",
       type: "registry:lib",
       dependencies: {
         "tsx": "^4.19.2",
@@ -88,11 +85,11 @@ export default {
         /^scripts\/create-flag\.ts$/,
         /^scripts\/check-flags-registry\.ts$/,
       ],
-      registryDependencies: ["core"],
+      registryDependencies: ["flags-core"],
     },
     {
-      name: "fargo-flags-complete",
-      fileName: "complete.json",
+      name: "flags-complete",
+      fileName: "flags-complete.json",
       type: "registry:lib",
       dependencies: {
         "zod": "^3.22.0",

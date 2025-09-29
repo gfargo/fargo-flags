@@ -1,5 +1,5 @@
 {
-  "name": "fargo-flags-testing",
+  "name": "flags-test-provider",
   "type": "registry:lib",
   "dependencies": [
     "react@^19.1.0",
@@ -9,8 +9,7 @@
     "tailwind-merge@^2.5.4"
   ],
   "registryDependencies": [
-    "http://localhost:3001/r/core",
-    "http://localhost:3001/r/react"
+    "https://flags.griffen.codes/r/flags-core"
   ],
   "files": [
     {
