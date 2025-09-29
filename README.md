@@ -2,56 +2,29 @@
 
 A **streamlined toolkit** built on top of [Vercel's Flags SDK](https://flags-sdk.dev/) that adds **shadcn/ui-compatible component registry distribution**, **interactive CLI tools**, and **enhanced developer experience** for type-safe feature flags in Next.js.
 
-## 📚 Table of Contents
+## 🤝 Built on Vercel's Flags SDK (What We Add)
 
-- [What Fargo Flags Adds to Vercel's Flags SDK](#what-fargo-flags-adds-to-vercels-flags-sdk)
-- [Built on Vercel's Flags SDK](#built-on-vercels-flags-sdk)
-- [Architecture](#architecture)
-- [Quick Start](#quick-start)
-- [Registry Components](#registry-components)
-- [CLI Tools](#cli-tools)
-- [Documentation](#documentation)
-- [Project Structure](#project-structure)
-- [How It Works](#how-it-works)
-- [Security & Performance](#security--performance)
-- [Production Ready](#production-ready)
-- [Links](#links)
-- [License](#license)
+Fargo Flags is a thin, DX-focused layer on top of [Vercel's Flags SDK](https://flags-sdk.dev/). We embrace the Flags SDK’s proven patterns, and add tooling that makes them effortless to adopt at scale.
 
-## ✨ What Fargo Flags Adds to Vercel's Flags SDK
+What we embrace from the Flags SDK:
 
-While [Vercel's Flags SDK](https://flags-sdk.dev/) provides the solid foundation of "flags as code" with server-side resolution and type safety, Fargo Flags enhances the experience with:
+- **Flags as code**: declarative definitions with consistent call sites
+- **Server-side resolution**: secure, performant evaluation during SSR
+- **Type safety**: full TypeScript support with runtime validation
+- **No vendor lock-in**: your flag logic lives in your codebase
+
+What we add for a better DX:
 
 - 🎯 **One-file-per-flag** architecture with individual flag definitions
-- 🛠️ **Interactive CLI wizard** - guided flag creation with automatic registry updates
-- 🔍 **Consistency checker** - validate flag registry integrity in CI/CD
-- 📦 **shadcn/ui-compatible registry** - drop-in installation via component registry
-- 🧪 **Enhanced testing** - easy flag overrides for tests and Storybook
-- 🎨 **React components** - `<Flag>` conditional rendering and providers
-- 📚 **Comprehensive docs** - interactive demo and complete usage guide
-- 🔧 **Zero build step** - static imports with checked-in aggregator
+- 🛠️ **Interactive CLI wizard** for guided flag creation with automatic registry updates
+- 🔍 **Consistency checker** to validate the registry in CI/CD
+- 📦 **shadcn/ui-compatible registry** for drop-in installation
+- 🧪 **Testing utilities** for easy overrides in tests and Storybook
+- 🎨 **React components**: `<FlagsProvider>`, `<Flag>`, and hooks
+- 📚 **Comprehensive docs** with an interactive demo
+- 🔧 **Zero build step** via static imports and a checked-in aggregator
 
-## 🤝 Built on Vercel's Flags SDK
-
-Fargo Flags is a **thin layer of abstraction** that enhances [Vercel's Flags SDK](https://flags-sdk.dev/) with streamlined tooling and distribution. We embrace the Flags SDK's core principles:
-
-- **Flags as code** - declarative flag definitions with consistent call sites
-- **Server-side resolution** - flags resolve on the server for security and performance  
-- **No vendor lock-in** - your flag logic stays in your codebase
-- **Type safety** - full TypeScript support with runtime validation
-
-### What We Add
-
-While the Flags SDK provides the solid foundation, Fargo Flags makes it **easier to adopt and scale**:
-
-- **Interactive CLI wizard** for creating flags without manual boilerplate
-- **Automatic registry management** - no need to manually maintain imports
-- **Component registry distribution** - install via shadcn/ui-style commands
-- **Enhanced React integration** - providers, hooks, and conditional components
-- **Testing utilities** - easy flag overrides for development and QA
-- **Consistency validation** - catch configuration drift in CI/CD
-
-Think of it as **"Flags SDK with batteries included"** - same great foundation, enhanced developer experience.
+Think of it as “Flags SDK with batteries included” — same great foundation, streamlined developer experience.
 
 ## 🧭 Architecture
 
