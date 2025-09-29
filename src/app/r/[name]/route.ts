@@ -2,6 +2,21 @@ import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
+type RegistryFile = {
+  type: string;
+  path: string;
+  target: string;
+  content?: string;
+};
+
+type ComponentData = {
+  name: string;
+  type: string;
+  dependencies: string[];
+  registryDependencies?: string[];
+  files: RegistryFile[];
+};
+
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ name: string }> }
@@ -25,10 +40,12 @@ export async function GET(
       }, { status: 404 });
     }
     
-    const componentData = JSON.parse(fs.readFileSync(componentPath, 'utf-8'));
+    const componentData = JSON.parse(
+      fs.readFileSync(componentPath, 'utf-8')
+    ) as ComponentData;
     
     // Populate file contents
-    const populatedFiles = componentData.files.map((file: any) => {
+    const populatedFiles = componentData.files.map((file: RegistryFile) => {
       const sourcePath = path.join(process.cwd(), file.path);
       let content = '';
       
@@ -41,7 +58,7 @@ export async function GET(
       return { ...file, content };
     });
     
-    const response = {
+    const response: ComponentData = {
       ...componentData,
       files: populatedFiles
     };
