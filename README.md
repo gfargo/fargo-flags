@@ -4,17 +4,19 @@ A **streamlined toolkit** built on top of [Vercel's Flags SDK](https://flags-sdk
 
 ## 📚 Table of Contents
 
-- Overview
-- What We Add
-- Quick Start
-- Registry Components
-- Project Structure
-- CLI Tools
-- Documentation
-- Limitations & Gotchas
-- FAQ
-- Contributing
-- License
+- [What Fargo Flags Adds to Vercel's Flags SDK](#what-fargo-flags-adds-to-vercels-flags-sdk)
+- [Built on Vercel's Flags SDK](#built-on-vercels-flags-sdk)
+- [Architecture](#architecture)
+- [Quick Start](#quick-start)
+- [Registry Components](#registry-components)
+- [CLI Tools](#cli-tools)
+- [Documentation](#documentation)
+- [Project Structure](#project-structure)
+- [How It Works](#how-it-works)
+- [Security & Performance](#security--performance)
+- [Production Ready](#production-ready)
+- [Links](#links)
+- [License](#license)
 
 ## ✨ What Fargo Flags Adds to Vercel's Flags SDK
 
@@ -206,7 +208,7 @@ Fargo Flags follows the shadcn/ui component registry pattern for easy installati
 
 Contributions are welcome! Please open issues or pull requests on GitHub. For larger changes, file an issue first to discuss scope and approach.
 
-## 📄 License
+## 📄 Licensing
 
 MIT — see `LICENSE` in the repository.
 
