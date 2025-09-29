@@ -1,0 +1,32 @@
+{
+  "name": "fargo-flags-cli",
+  "type": "registry:lib",
+  "dependencies": [
+    "react@^19.1.0",
+    "lucide-react@^0.400.0",
+    "class-variance-authority@^0.7.1",
+    "clsx@^2.1.1",
+    "tailwind-merge@^2.5.4",
+    "tsx@^4.19.2",
+    "prompts@^2.4.2",
+    "fast-glob@^3.3.2",
+    "prettier@^3.4.2"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/api/registry/r/core"
+  ],
+  "files": [
+    {
+      "type": "registry:lib",
+      "path": "scripts/check-flags-registry.ts",
+      "target": "scripts/check-flags-registry.ts",
+      "content": ""
+    },
+    {
+      "type": "registry:lib",
+      "path": "scripts/create-flag.ts",
+      "target": "scripts/create-flag.ts",
+      "content": ""
+    }
+  ]
+}

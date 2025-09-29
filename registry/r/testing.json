@@ -1,0 +1,23 @@
+{
+  "name": "fargo-flags-testing",
+  "type": "registry:lib",
+  "dependencies": [
+    "react@^19.1.0",
+    "lucide-react@^0.400.0",
+    "class-variance-authority@^0.7.1",
+    "clsx@^2.1.1",
+    "tailwind-merge@^2.5.4"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/api/registry/r/core",
+    "http://localhost:3000/api/registry/r/react"
+  ],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "src/components/flags/flags-test-provider.tsx",
+      "target": "@/components/flags/flags-test-provider.tsx",
+      "content": ""
+    }
+  ]
+}

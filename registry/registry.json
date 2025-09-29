@@ -1,0 +1,34 @@
+{
+  "registry": [
+    {
+      "name": "fargo-flags-core",
+      "item": "http://localhost:3000/api/registry/r/core",
+      "file": "r/core.json",
+      "type": "registry:lib"
+    },
+    {
+      "name": "fargo-flags-react",
+      "item": "http://localhost:3000/api/registry/r/react",
+      "file": "r/react.json",
+      "type": "registry:component"
+    },
+    {
+      "name": "fargo-flags-testing",
+      "item": "http://localhost:3000/api/registry/r/testing",
+      "file": "r/testing.json",
+      "type": "registry:lib"
+    },
+    {
+      "name": "fargo-flags-cli",
+      "item": "http://localhost:3000/api/registry/r/cli",
+      "file": "r/cli.json",
+      "type": "registry:lib"
+    },
+    {
+      "name": "fargo-flags-complete",
+      "item": "http://localhost:3000/api/registry/r/complete",
+      "file": "r/complete.json",
+      "type": "registry:lib"
+    }
+  ]
+}
