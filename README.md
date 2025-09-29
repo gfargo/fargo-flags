@@ -42,7 +42,7 @@ Think of it as **"Flags SDK with batteries included"** - same great foundation, 
 ### 1. Install Core System
 
 ```bash
-npx shadcn@latest add https://fargo-flags.com/r/flags-core
+npx shadcn@latest add https://flags.griffen.codes/r/flags-core
 ```
 
 This installs the core flag system including types, runtime, and React provider.
@@ -50,7 +50,7 @@ This installs the core flag system including types, runtime, and React provider.
 ### 2. Install CLI Tools
 
 ```bash
-npx shadcn@latest add https://fargo-flags.com/r/flags-cli
+npx shadcn@latest add https://flags.griffen.codes/r/flags-cli
 ```
 
 Add these scripts to your `package.json`:
@@ -127,10 +127,10 @@ Fargo Flags follows the shadcn component registry pattern for easy installation:
 
 | Component | Description | Install Command |
 |-----------|-------------|-----------------|
-| **flags-core** | Core system (types, runtime, provider) | `npx shadcn@latest add https://fargo-flags.com/r/flags-core` |
-| **flags-flag** | `<Flag>` conditional rendering component | `npx shadcn@latest add https://fargo-flags.com/r/flags-flag` |
-| **flags-test-provider** | Testing utilities for overrides | `npx shadcn@latest add https://fargo-flags.com/r/flags-test-provider` |
-| **flags-cli** | Interactive wizard and consistency checker | `npx shadcn@latest add https://fargo-flags.com/r/flags-cli` |
+| **flags-core** | Core system (types, runtime, provider) | `npx shadcn@latest add https://flags.griffen.codes/r/flags-core` |
+| **flags-flag** | `<Flag>` conditional rendering component | `npx shadcn@latest add https://flags.griffen.codes/r/flags-flag` |
+| **flags-test-provider** | Testing utilities for overrides | `npx shadcn@latest add https://flags.griffen.codes/r/flags-test-provider` |
+| **flags-cli** | Interactive wizard and consistency checker | `npx shadcn@latest add https://flags.griffen.codes/r/flags-cli` |
 
 ## 📁 Project Structure
 
@@ -390,10 +390,9 @@ Fargo Flags follows the same core principles as [Vercel's Flags SDK](https://fla
 
 ## 🔗 Links
 
-- **[Live Demo](/)** - Interactive feature flags showcase
-- **[Documentation](/docs)** - Complete setup and usage guide
+- **[Live Demo](https://flags.griffen.codes)** - Interactive feature flags showcase
+- **[Documentation](https://flags.griffen.codes/docs)** - Complete setup and usage guide
 - **[Vercel Flags SDK](https://flags-sdk.dev/)** - The underlying foundation we build upon
-- **[GitHub](https://github.com/your-repo/fargo-flags)** - Source code and issues
 
 ## 📝 License
 
