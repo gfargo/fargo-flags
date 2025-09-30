@@ -2,7 +2,7 @@
 
 A **streamlined toolkit** built on top of [Vercel's Flags SDK](https://flags-sdk.dev/) that adds **shadcn/ui-compatible component registry distribution**, **interactive CLI tools**, and **enhanced developer experience** for type-safe feature flags in Next.js.
 
-## 🤝 Built on Vercel's Flags SDK (What We Add)
+## 🤝 Built on Vercel's Flags SDK (Now with Batteries 🔋)
 
 Fargo Flags is a thin, DX-focused layer on top of [Vercel's Flags SDK](https://flags-sdk.dev/). We embrace the Flags SDK’s proven patterns, and add tooling that makes them effortless to adopt at scale.
 
@@ -11,7 +11,6 @@ What we embrace from the Flags SDK:
 - **Flags as code**: declarative definitions with consistent call sites
 - **Server-side resolution**: secure, performant evaluation during SSR
 - **Type safety**: full TypeScript support with runtime validation
-- **No vendor lock-in**: your flag logic lives in your codebase
 
 What we add for a better DX:
 
@@ -35,8 +34,8 @@ Think of it as “Flags SDK with batteries included” — same great foundation
              │                            wizard updates                │
              │                        (no codegen/build)                ▼
              │                                               ┌──────────────────────────┐
-             └──────────────────────────────────────────────▶│  src/lib/flags/registry │
-                                                             │       .config.ts        │
+             └──────────────────────────────────────────────▶│  src/lib/flags/registry  │
+                                                             │       .config.ts         │
                                                              └──────────────────────────┘
                                                                           │
                                                          server resolves  │  all
@@ -63,6 +62,13 @@ Think of it as “Flags SDK with batteries included” — same great foundation
                                     │ useFlag('key')         │     │ <Flag when="key"/> │
                                     └────────────────────────┘     └────────────────────┘
 ```
+
+Flow
+
+- Define: Add `*.flag.ts` files to `src/lib/flags/defs/`.
+- Registry: Wizard updates `src/lib/flags/registry.config.ts` (no build step).
+- Resolve: Server resolves via `resolveAllFlags(ctx)`; `pickClientFlags()` filters public flags.
+- Use: Hydrate `<FlagsProvider>`; consume via `useFlag('key')` or `<Flag when="key" />`.
 
 ## 🚀 Quick Start
 
@@ -176,14 +182,6 @@ Fargo Flags follows the shadcn/ui component registry pattern for easy installati
   - Yes. Your flags follow the same patterns; remove the CLI and maintain the registry manually.
 - Does it require a build step?
   - No. The registry uses checked-in static imports that your app consumes directly.
-
-## 🤝 Contributing
-
-Contributions are welcome! Please open issues or pull requests on GitHub. For larger changes, file an issue first to discuss scope and approach.
-
-## 📄 Licensing
-
-MIT — see `LICENSE` in the repository.
 
 ## 📁 Project Structure
 
@@ -414,17 +412,6 @@ test("premium features", () => {
 });
 ```
 
-## 🏗️ How It Works
-
-Fargo Flags follows the same core principles as [Vercel's Flags SDK](https://flags-sdk.dev/) - flags as code with server-side resolution - while adding streamlined tooling:
-
-1. **Define** flags in individual `*.flag.ts` files with schemas and decision logic (like Flags SDK)
-2. **Wizard** (`pnpm flags:new`) creates files and updates registry automatically (Fargo enhancement)
-3. **Server** resolves all flags with context via `resolveAllFlags()` (enhanced Flags SDK pattern)
-4. **Client** receives safe subset via `pickClientFlags()` and React provider (Fargo tooling)
-5. **Components** use `useFlag()` hook or `<Flag>` wrapper for conditional rendering (Fargo components)
-6. **Validator** (`pnpm flags:check`) ensures registry consistency in CI/CD (Fargo tooling)
-
 ## 🔒 Security & Performance
 
 - **Server-side resolution**: All decision logic runs securely on the server
@@ -447,6 +434,10 @@ Fargo Flags follows the same core principles as [Vercel's Flags SDK](https://fla
 - **[Documentation](https://flags.griffen.codes/docs)** - Complete setup and usage guide
 - **[Vercel Flags SDK](https://flags-sdk.dev/)** - The underlying foundation we build upon
 
-## 📝 License
+## 🤝 Contributing
 
-MIT
+Contributions are welcome! Please open issues or pull requests on GitHub. For larger changes, file an issue first to discuss scope and approach.
+
+## 📄 Licensing
+
+MIT — see `LICENSE` in the repository.
