@@ -2,7 +2,7 @@
 
 A **streamlined toolkit** built on top of [Vercel's Flags SDK](https://flags-sdk.dev/) that adds **shadcn/ui-compatible component registry distribution**, **interactive CLI tools**, and **enhanced developer experience** for type-safe feature flags in Next.js.
 
-## 🤝 Built on Vercel's Flags SDK (Now with Batteries 🔋)
+## 🤝 Built on Vercel's Flags SDK (Now with Batteries included ⚡️🔋)
 
 Fargo Flags is a thin, DX-focused layer on top of [Vercel's Flags SDK](https://flags-sdk.dev/). We embrace the Flags SDK’s proven patterns, and add tooling that makes them effortless to adopt at scale.
 
