@@ -18,34 +18,9 @@ export const metadata: Metadata = {
     "flags as code",
     "server-side rendering",
   ],
-  authors: [{ name: "Fargo Flags Team" }],
-  creator: "Fargo Flags",
-  publisher: "Fargo Flags",
-  openGraph: {
-    title: "Fargo Flags - Enhanced Feature Flags Toolkit",
-    description:
-      "Streamlined feature flags toolkit with CLI tools, component registry, and enhanced developer experience. Built on Vercel's Flags SDK.",
-    url: "https://flags.griffen.codes",
-    siteName: "Fargo Flags",
-    images: [
-      {
-        url: "https://flags.griffen.codes/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Fargo Flags - Enhanced Feature Flags Toolkit",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Fargo Flags - Enhanced Feature Flags Toolkit",
-    description:
-      "Streamlined feature flags toolkit with CLI tools, component registry, and enhanced developer experience. Built on Vercel's Flags SDK.",
-    images: ["https://flags.griffen.codes/og-image.png"],
-    creator: "@fargoflags",
-  },
+  authors: [{ name: "gfargo" }],
+  creator: "griffen.codes",
+  publisher: "griffen.codes",
   robots: {
     index: true,
     follow: true,

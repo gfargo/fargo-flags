@@ -14,29 +14,7 @@ export const metadata: Metadata = {
     "cli tools documentation",
     "flags as code guide"
   ],
-  authors: [{ name: "Fargo Flags Team" }],
-  openGraph: {
-    title: "Fargo Flags Documentation - Complete Guide",
-    description: "Complete documentation for Fargo Flags - enhanced feature flags toolkit built on Vercel's Flags SDK. Installation, usage, CLI tools, and best practices.",
-    url: "https://flags.griffen.codes/docs",
-    siteName: "Fargo Flags",
-    images: [
-      {
-        url: "https://flags.griffen.codes/og-docs.png",
-        width: 1200,
-        height: 630,
-        alt: "Fargo Flags Documentation"
-      }
-    ],
-    locale: "en_US",
-    type: "article"
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Fargo Flags Documentation - Complete Guide",
-    description: "Complete documentation for Fargo Flags - enhanced feature flags toolkit built on Vercel's Flags SDK.",
-    images: ["https://flags.griffen.codes/og-docs.png"]
-  },
+  authors: [{ name: "gfargo" }],
   robots: {
     index: true,
     follow: true,
@@ -63,16 +41,12 @@ export default function DocsPage() {
     "datePublished": "2024-01-01",
     "dateModified": new Date().toISOString(),
     "author": {
-      "@type": "Organization",
-      "name": "Fargo Flags Team"
+      "@type": "Person",
+      "name": "gfargo"
     },
     "publisher": {
-      "@type": "Organization",
-      "name": "Fargo Flags",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://flags.griffen.codes/icon-512.png"
-      }
+      "@type": "Person",
+      "name": "gfargo"
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
