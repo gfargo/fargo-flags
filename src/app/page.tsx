@@ -53,8 +53,8 @@ export default function Home() {
     operatingSystem: "Any",
     programmingLanguage: ["TypeScript", "JavaScript"],
     author: {
-      "@type": "Organization",
-      name: "Fargo Flags Team",
+      "@type": "Person",
+      name: "gfargo",
     },
     offers: {
       "@type": "Offer",
@@ -69,7 +69,7 @@ export default function Home() {
       "Testing utilities",
       "Consistency validation for CI/CD",
     ],
-    screenshot: "https://flags.griffen.codes/opengraph-image.png",
+    screenshot: "https://flags.griffen.codes/opengraph-image.jpg",
     softwareVersion: "1.0.0",
     releaseNotes: "Initial release with full feature flag toolkit",
   };

@@ -34,36 +34,13 @@ export const metadata: Metadata = {
     "flags as code",
     "server-side rendering"
   ],
-  authors: [{ name: "Fargo Flags Team" }],
-  creator: "Fargo Flags",
-  publisher: "Fargo Flags",
+  authors: [{ name: "gfargo" }],
+  creator: "griffen.codes",
+  publisher: "griffen.codes",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
-  },
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://flags.griffen.codes",
-    siteName: "Fargo Flags",
-    title: "Fargo Flags - Enhanced Feature Flags Toolkit",
-    description: "Enhanced feature flags toolkit built on Vercel's Flags SDK with CLI tools, component registry, and streamlined developer experience.",
-    images: [
-      {
-        url: "/opengraph-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Fargo Flags - Enhanced Feature Flags Toolkit"
-      }
-    ]
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Fargo Flags - Enhanced Feature Flags Toolkit",
-    description: "Enhanced feature flags toolkit built on Vercel's Flags SDK with CLI tools, component registry, and streamlined developer experience.",
-    images: ["/opengraph-image.png"],
-    creator: "@fargoflags"
   },
   robots: {
     index: true,
