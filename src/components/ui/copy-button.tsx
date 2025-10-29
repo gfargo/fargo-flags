@@ -41,7 +41,7 @@ export function CopyButton({ text, className, children }: CopyButtonProps) {
       )}
     >
       <span
-        className="flex-1 text-left cursor-text select-all hover:bg-muted/50 rounded px-1 py-0.5 transition-colors"
+        className="flex-1 text-left cursor-text select-all hover:bg-muted/50 rounded px-1 py-0.5 transition-colors whitespace-pre-wrap"
         onClick={handleTextClick}
         title="Click to select text"
       >
