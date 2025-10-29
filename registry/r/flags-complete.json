@@ -53,6 +53,12 @@
     },
     {
       "type": "registry:lib",
+      "path": "src/lib/flags/registry.config.template.ts",
+      "target": "@/lib/flags/registry.config.ts",
+      "content": ""
+    },
+    {
+      "type": "registry:lib",
       "path": "src/lib/flags/runtime.ts",
       "target": "@/lib/flags/runtime.ts",
       "content": ""

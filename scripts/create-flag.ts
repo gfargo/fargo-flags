@@ -72,23 +72,23 @@ export default defineFlag({
   let cfg = fs.readFileSync(REG_FILE, "utf8");
   const importLine = `import * as ${importId} from "./defs/${base}.flag";`;
   if (!cfg.includes(importLine)) {
-    cfg = inject(cfg, /\/\/ @okayd-flags:imports\n/, importLine + "\n");
+    cfg = inject(cfg, /\/\/ @fargo-flags:imports\n/, importLine + "\n");
   }
 
   const schemaEntry = `  "${key}": ${importId}.schema,`;
   if (!cfg.includes(schemaEntry)) {
-    cfg = inject(cfg, /\/\/ @okayd-flags:schemas\n/, schemaEntry + "\n");
+    cfg = inject(cfg, /\/\/ @fargo-flags:schemas\n/, schemaEntry + "\n");
   }
 
   const regEntry = `  "${key}": ${importId}.default,`;
   if (!cfg.includes(regEntry)) {
-    cfg = inject(cfg, /\/\/ @okayd-flags:registry\n/, regEntry + "\n");
+    cfg = inject(cfg, /\/\/ @fargo-flags:registry\n/, regEntry + "\n");
   }
 
   if (answers.isPublic) {
     const pubEntry = `  "${key}",`;
     if (!cfg.includes(pubEntry)) {
-      cfg = inject(cfg, /\/\/ @okayd-flags:public\n/, pubEntry + "\n");
+      cfg = inject(cfg, /\/\/ @fargo-flags:public\n/, pubEntry + "\n");
     }
   }
 

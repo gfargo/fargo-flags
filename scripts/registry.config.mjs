@@ -15,6 +15,11 @@ export default {
   
   // Path rewriter for installation targets
   pathRewriter: (fromPath) => {
+    // Special handling for template files - rename during installation
+    if (fromPath === 'src/lib/flags/registry.config.template.ts') {
+      return '@/lib/flags/registry.config.ts';
+    }
+    
     // Transform source paths to installation paths
     const mappings = {
       'src/lib/': '@/lib/',
@@ -44,6 +49,7 @@ export default {
       include: [
         /^src\/lib\/flags\/kit\.ts$/,
         /^src\/lib\/flags\/runtime\.ts$/,
+        /^src\/lib\/flags\/registry\.config\.template\.ts$/,
         /^src\/lib\/utils\.ts$/,
         /^src\/components\/flags\/flags-provider\.tsx$/,
       ],
@@ -101,6 +107,7 @@ export default {
       include: [
         /^src\/lib\/flags\/kit\.ts$/,
         /^src\/lib\/flags\/runtime\.ts$/,
+        /^src\/lib\/flags\/registry\.config\.template\.ts$/,
         /^src\/lib\/utils\.ts$/,
         /^src\/components\/flags\/flags-provider\.tsx$/,
         /^src\/components\/flags\/flag\.tsx$/,
