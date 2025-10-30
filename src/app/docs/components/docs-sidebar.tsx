@@ -41,3 +41,4 @@ export function DocsSidebar({ sections, activeSection, onSectionClick }: DocsSid
       </div>
     </aside>
   );
+}

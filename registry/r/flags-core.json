@@ -14,27 +14,27 @@
     {
       "type": "registry:component",
       "path": "components/flags/flags-provider.tsx",
-      "content": ""
+      "content": "\"use client\";\nimport { createContext, useContext } from \"react\";\nimport type { ClientFlags } from \"@/lib/flags/runtime\";\n\nconst FlagsContext = createContext<ClientFlags | null>(null);\n\nexport function FlagsProvider({\n  flags,\n  children,\n}: {\n  flags: ClientFlags;\n  children: React.ReactNode;\n}) {\n  return <FlagsContext.Provider value={flags}>{children}</FlagsContext.Provider>;\n}\n\nexport function useFlags(): ClientFlags {\n  const ctx = useContext(FlagsContext);\n  if (!ctx) throw new Error(\"useFlags must be used within <FlagsProvider />\");\n  return ctx;\n}\n\nexport function useFlag<K extends keyof ClientFlags>(key: K): ClientFlags[K] {\n  return useFlags()[key];\n}"
     },
     {
       "type": "registry:lib",
       "path": "lib/flags/kit.ts",
-      "content": ""
+      "content": "import { z } from \"zod\";\n\nexport type FlagContext = {\n  getUser?: () => Promise<{ id: string; plan?: string } | null>;\n  getWorkspace?: () => Promise<{ id: string; plan?: string } | null>;\n};\n\nexport type ClientExposure<T = unknown> =\n  | { public: true; serialize?: (value: T) => unknown } // exposed to client\n  | { public: false }; // server-only\n\nexport type FlagDefinition<S extends z.ZodTypeAny> = {\n  key: string;\n  schema: S;\n  description?: string;\n  defaultValue: z.infer<S>;\n  options?: { value: z.infer<S>; label?: string }[];\n  client?: ClientExposure<z.infer<S>>; // NEXT_PUBLIC-style control\n  decide?: (ctx: FlagContext) => z.infer<S> | Promise<z.infer<S>>; // server-side only\n};\n\nexport function defineFlag<S extends z.ZodTypeAny>(def: FlagDefinition<S>) {\n  return def;\n}"
     },
     {
       "type": "registry:lib",
       "path": "lib/flags/registry.config.ts",
-      "content": ""
+      "content": "import { z } from \"zod\";\nimport type { FlagDefinition } from \"./kit\";\n\n/**\n * Managed regions — the wizard inserts new imports and entries\n * between these tags. Manual edits are fine too.\n */\n\n// @fargo-flags:imports\n// @fargo-flags:imports:end\n\nexport const flagSchemas = {\n  // @fargo-flags:schemas\n  // @fargo-flags:schemas:end\n} as const;\n\nexport const registry = {\n  // @fargo-flags:registry\n  // @fargo-flags:registry:end\n} as const satisfies Record<\n  keyof typeof flagSchemas,\n  FlagDefinition<z.ZodTypeAny>\n>;\n\n/** Keys safe to send to the client (NEXT_PUBLIC-style). */\nexport const clientFlagKeys = [\n  // @fargo-flags:public\n  // @fargo-flags:public:end\n] as const;\n\nexport type SchemaMap = typeof flagSchemas;\nexport type FlagKey = keyof SchemaMap;"
     },
     {
       "type": "registry:lib",
       "path": "lib/flags/runtime.ts",
-      "content": ""
+      "content": "import { z } from \"zod\";\nimport {\n  flagSchemas,\n  registry,\n  clientFlagKeys,\n  type SchemaMap,\n} from \"./registry.config\";\nimport type { FlagContext } from \"./kit\";\n\nexport type Flags = { [K in keyof SchemaMap]: z.infer<SchemaMap[K]> };\nexport type FlagKey = keyof Flags;\n\nexport type ClientSchemaMap = Pick<SchemaMap, (typeof clientFlagKeys)[number]>;\nexport type ClientFlags = {\n  [K in keyof ClientSchemaMap]: z.infer<ClientSchemaMap[K]>;\n};\n\nexport const defaultFlags = Object.fromEntries(\n  Object.entries(registry).map(([key, def]) => [key, def.defaultValue])\n) as Flags;\n\n/** Resolve all flags on the server, validate against schemas. */\nexport async function resolveAllFlags(ctx?: FlagContext): Promise<Flags> {\n  const keys = Object.keys(registry) as (keyof SchemaMap)[];\n\n  // Handle empty registry case\n  if (keys.length === 0) {\n    return {} as Flags;\n  }\n\n  const entries = await Promise.all(\n    keys.map(async (key) => {\n      const def = registry[key];\n      const raw = await Promise.resolve(\n        def.decide?.(ctx!) ?? def.defaultValue\n      );\n      const value = flagSchemas[key].parse(raw);\n      return [key, value] as const;\n    })\n  );\n  return Object.fromEntries(entries) as Flags;\n}\n\n/** Create the client-safe subset (applies optional per-flag 'serialize'). */\nexport function pickClientFlags(flags: Flags): ClientFlags {\n  const out: Record<string, unknown> = {};\n  for (const key of clientFlagKeys) {\n    out[key as string] = flags[key];\n  }\n  return out as ClientFlags;\n}\n"
     },
     {
       "type": "registry:lib",
       "path": "lib/utils.ts",
-      "content": ""
+      "content": "import { clsx, type ClassValue } from \"clsx\"\nimport { twMerge } from \"tailwind-merge\"\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n"
     }
   ]
 }

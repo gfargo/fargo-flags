@@ -75,10 +75,19 @@ function buildComponentJSON(allFiles, componentConfig, allComponents) {
     const relativePath = config.pathRewriter(sourcePath);
     const fileType = determineFileType(sourcePath);
     
+    // Read the actual file content
+    let content = "";
+    try {
+      const fullPath = path.join(ROOT, sourcePath);
+      content = fs.readFileSync(fullPath, 'utf8');
+    } catch (error) {
+      console.warn(`Warning: Could not read file ${sourcePath}:`, error.message);
+    }
+    
     return {
       type: fileType,
       path: relativePath,      // Relative path for installation (shadcn/ui format)
-      content: ""              // Populated dynamically by API
+      content: content         // Actual file content for static registry
     };
   });
 

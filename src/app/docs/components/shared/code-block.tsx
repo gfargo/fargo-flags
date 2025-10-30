@@ -17,7 +17,10 @@ export function CodeBlock({ code, language, showCopy = true, className = "" }: C
   }
 
   return (
-    <pre className={`bg-muted p-4 rounded-lg text-sm mb-4 ${className}`}>
+    <pre
+      className={`bg-muted p-4 rounded-lg text-sm mb-4 ${className}`}
+      data-language={language}
+    >
       <code>{code}</code>
     </pre>
   );

@@ -15,7 +15,7 @@
     {
       "type": "registry:component",
       "path": "components/flags/flags-test-provider.tsx",
-      "content": ""
+      "content": "\"use client\";\nimport { PropsWithChildren, useMemo } from \"react\";\nimport { FlagsProvider } from \"./flags-provider\";\nimport { defaultFlags, pickClientFlags } from \"@/lib/flags/runtime\";\n\nexport type PartialClientFlags = Partial<ReturnType<typeof pickClientFlags>>;\n\nexport function FlagsTestProvider({\n  overrides = {},\n  children,\n}: PropsWithChildren<{ overrides?: PartialClientFlags }>) {\n  const clientDefault = pickClientFlags(defaultFlags);\n  const flags = useMemo(() => ({ ...clientDefault, ...overrides }), [clientDefault, overrides]);\n  return <FlagsProvider flags={flags}>{children}</FlagsProvider>;\n}"
     }
   ]
 }

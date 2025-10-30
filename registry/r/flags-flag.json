@@ -15,7 +15,7 @@
     {
       "type": "registry:component",
       "path": "components/flags/flag.tsx",
-      "content": ""
+      "content": "\"use client\";\nimport { ReactNode } from \"react\";\nimport { useFlag } from \"./flags-provider\";\nimport type { ClientFlags } from \"@/lib/flags/runtime\";\n\ntype Props<K extends keyof ClientFlags> = {\n  when: K;               // flag key\n  is?: ClientFlags[K];   // render when value === is\n  not?: ClientFlags[K];  // render when value !== not\n  fallback?: ReactNode;\n  children: ReactNode;\n};\n\nexport function Flag<K extends keyof ClientFlags>({\n  when,\n  is,\n  not,\n  fallback = null,\n  children,\n}: Props<K>) {\n  const value = useFlag(when);\n  const pass =\n    typeof is !== \"undefined\"\n      ? value === is\n      : typeof not !== \"undefined\"\n      ? value !== not\n      : Boolean(value);\n  return pass ? <>{children}</> : <>{fallback}</>;\n}"
     }
   ]
 }
