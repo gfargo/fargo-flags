@@ -28,6 +28,12 @@
       "content": ""
     },
     {
+      "type": "registry:lib",
+      "path": "scripts/path-resolver.ts",
+      "target": "scripts/path-resolver.ts",
+      "content": ""
+    },
+    {
       "type": "registry:component",
       "path": "src/components/flags/flag.tsx",
       "target": "@/components/flags/flag.tsx",

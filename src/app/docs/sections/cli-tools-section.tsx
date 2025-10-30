@@ -41,7 +41,8 @@ export function CLIToolsSection() {
             {`{
   "scripts": {
     "flags:new": "tsx scripts/create-flag.ts",
-    "flags:check": "tsx scripts/check-flags-registry.ts"
+    "flags:check": "tsx scripts/check-flags-registry.ts",
+    "flags:validate": "tsx scripts/validate-flags-installation.ts"
   }
 }`}
           </pre>

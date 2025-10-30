@@ -90,6 +90,7 @@ export default {
       include: [
         /^scripts\/create-flag\.ts$/,
         /^scripts\/check-flags-registry\.ts$/,
+        /^scripts\/path-resolver\.ts$/,
       ],
       registryDependencies: ["flags-core"],
     },
@@ -114,6 +115,7 @@ export default {
         /^src\/components\/flags\/flags-test-provider\.tsx$/,
         /^scripts\/create-flag\.ts$/,
         /^scripts\/check-flags-registry\.ts$/,
+        /^scripts\/path-resolver\.ts$/,
       ],
       exclude: [
         /^src\/lib\/flags\/registry\.config\.ts$/,

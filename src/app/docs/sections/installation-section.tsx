@@ -120,7 +120,8 @@ export function InstallationSection() {
           {`{
   "scripts": {
     "flags:new": "tsx scripts/create-flag.ts",
-    "flags:check": "tsx scripts/check-flags-registry.ts"
+    "flags:check": "tsx scripts/check-flags-registry.ts",
+    "flags:validate": "tsx scripts/validate-flags-installation.ts"
   }
 }`}
         </pre>
@@ -158,7 +159,8 @@ export function InstallationSection() {
         {`{
   "scripts": {
     "flags:new": "tsx scripts/create-flag.ts",
-    "flags:check": "tsx scripts/check-flags-registry.ts"
+    "flags:check": "tsx scripts/check-flags-registry.ts",
+    "flags:validate": "tsx scripts/validate-flags-installation.ts"
   }
 }`}
       </pre>
@@ -171,8 +173,8 @@ export function InstallationSection() {
             <code>package.json</code> scripts
           </li>
           <li>
-            • You must manually add the <code>flags:new</code> and{" "}
-            <code>flags:check</code> scripts
+            • You must manually add the <code>flags:new</code>,{" "}
+            <code>flags:check</code>, and <code>flags:validate</code> scripts
           </li>
           <li>
             • CLI tools require <code>tsx</code> to run TypeScript files

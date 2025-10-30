@@ -2,22 +2,30 @@ import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import fg from "fast-glob";
+import { createPathResolver } from "./path-resolver";
 
 const ROOT = process.cwd();
-const DEF_GLOB = "src/lib/flags/defs/**/*.flag.ts";
-const REG_FILE = path.join(ROOT, "src/lib/flags/registry.config.ts");
+const pathResolver = createPathResolver(ROOT);
 
-async function importTs(p: string) {
+// Use alias-aware path resolution
+const DEFS_DIR = pathResolver.resolveFlagDefsPath();
+const REG_FILE = pathResolver.resolveRegistryConfigPath();
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+async function importTs(p: string): Promise<any> {
   const url = pathToFileURL(p).href;
   return await import(url);
 }
 
 async function main() {
-  const defPaths = await fg(DEF_GLOB, { cwd: ROOT });
+  // Convert absolute path to relative glob pattern for fast-glob
+  const relativeDefsDir = path.relative(ROOT, DEFS_DIR);
+  const defGlobPattern = path.join(relativeDefsDir, "**/*.flag.ts").replace(/\\/g, "/");
+  const defPaths = await fg(defGlobPattern, { cwd: ROOT });
   const defs = await Promise.all(
     defPaths.map(async (rel) => {
       const abs = path.join(ROOT, rel);
-      const mod: any = await importTs(abs);
+      const mod = await importTs(abs);
       const key = mod.key ?? mod.default?.key;
       if (!key) throw new Error(`Missing export 'key' in ${rel}`);
       const isPublic = !!(mod.default?.client?.public);
@@ -26,7 +34,7 @@ async function main() {
   );
 
   if (!fs.existsSync(REG_FILE)) throw new Error("registry.config.ts not found");
-  const agg: any = await importTs(REG_FILE);
+  const agg = await importTs(REG_FILE);
   const regKeys: string[] = Object.keys(agg.registry ?? {});
   const schemaKeys: string[] = Object.keys(agg.flagSchemas ?? {});
   const publicKeys: string[] = Array.from(agg.clientFlagKeys ?? []);

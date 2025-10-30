@@ -1,10 +1,14 @@
 import fs from "node:fs";
 import path from "node:path";
 import prompts from "prompts";
+import { createPathResolver } from "./path-resolver";
 
 const ROOT = process.cwd();
-const DEFS_DIR = path.join(ROOT, "src/lib/flags/defs");
-const REG_FILE = path.join(ROOT, "src/lib/flags/registry.config.ts");
+const pathResolver = createPathResolver(ROOT);
+
+// Use alias-aware path resolution
+const DEFS_DIR = pathResolver.resolveFlagDefsPath();
+const REG_FILE = pathResolver.resolveRegistryConfigPath();
 
 function snake(s: string) { return s.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, ""); }
 function kebab(s: string) { return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); }
