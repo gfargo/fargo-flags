@@ -5,7 +5,6 @@ import path from 'path';
 type RegistryFile = {
   type: string;
   path: string;
-  target: string;
   content?: string;
 };
 
@@ -44,15 +43,31 @@ export async function GET(
       fs.readFileSync(componentPath, 'utf-8')
     ) as ComponentData;
     
-    // Populate file contents
+    // Use pre-populated file contents from registry (no need to read from disk)
     const populatedFiles = componentData.files.map((file: RegistryFile) => {
-      const sourcePath = path.join(process.cwd(), file.path);
+      // If content is already populated in the registry file, use it
+      if (file.content) {
+        return file;
+      }
+      
+      // Fallback: try to read from source file (for backward compatibility)
+      // Convert relative path back to source path for reading
+      let sourcePath = file.path;
+      if (file.path.startsWith('components/')) {
+        sourcePath = file.path.replace('components/', 'src/components/');
+      } else if (file.path.startsWith('lib/')) {
+        sourcePath = file.path.replace('lib/', 'src/lib/');
+      } else if (!file.path.startsWith('src/') && !file.path.startsWith('scripts/')) {
+        sourcePath = `src/${file.path}`;
+      }
+      
+      const fullSourcePath = path.join(process.cwd(), sourcePath);
       let content = '';
       
-      if (fs.existsSync(sourcePath)) {
-        content = fs.readFileSync(sourcePath, 'utf-8');
+      if (fs.existsSync(fullSourcePath)) {
+        content = fs.readFileSync(fullSourcePath, 'utf-8');
       } else {
-        console.warn(`Source file not found: ${sourcePath}`);
+        console.warn(`Source file not found: ${fullSourcePath}`);
       }
       
       return { ...file, content };
