@@ -14,8 +14,7 @@
   "files": [
     {
       "type": "registry:component",
-      "path": "src/components/flags/flags-test-provider.tsx",
-      "target": "@/components/flags/flags-test-provider.tsx",
+      "path": "components/flags/flags-test-provider.tsx",
       "content": ""
     }
   ]

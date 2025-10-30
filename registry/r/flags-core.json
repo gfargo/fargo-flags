@@ -13,32 +13,27 @@
   "files": [
     {
       "type": "registry:component",
-      "path": "src/components/flags/flags-provider.tsx",
-      "target": "@/components/flags/flags-provider.tsx",
+      "path": "components/flags/flags-provider.tsx",
       "content": ""
     },
     {
       "type": "registry:lib",
-      "path": "src/lib/flags/kit.ts",
-      "target": "@/lib/flags/kit.ts",
+      "path": "lib/flags/kit.ts",
       "content": ""
     },
     {
       "type": "registry:lib",
-      "path": "src/lib/flags/registry.config.template.ts",
-      "target": "@/lib/flags/registry.config.ts",
+      "path": "lib/flags/registry.config.ts",
       "content": ""
     },
     {
       "type": "registry:lib",
-      "path": "src/lib/flags/runtime.ts",
-      "target": "@/lib/flags/runtime.ts",
+      "path": "lib/flags/runtime.ts",
       "content": ""
     },
     {
       "type": "registry:lib",
-      "path": "src/lib/utils.ts",
-      "target": "@/lib/utils.ts",
+      "path": "lib/utils.ts",
       "content": ""
     }
   ]

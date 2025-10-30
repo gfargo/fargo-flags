@@ -19,19 +19,16 @@
     {
       "type": "registry:lib",
       "path": "scripts/check-flags-registry.ts",
-      "target": "scripts/check-flags-registry.ts",
       "content": ""
     },
     {
       "type": "registry:lib",
       "path": "scripts/create-flag.ts",
-      "target": "scripts/create-flag.ts",
       "content": ""
     },
     {
       "type": "registry:lib",
       "path": "scripts/path-resolver.ts",
-      "target": "scripts/path-resolver.ts",
       "content": ""
     }
   ]

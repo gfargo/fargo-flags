@@ -70,15 +70,14 @@ function buildComponentJSON(allFiles, componentConfig, allComponents) {
     console.warn(`Warning: No files found for component '${componentConfig.name}'`);
   }
 
-  // Transform files for registry format
+  // Transform files for registry format (shadcn/ui compatible)
   const files = [...matchedFiles].sort().map(sourcePath => {
-    const targetPath = config.pathRewriter(sourcePath);
+    const relativePath = config.pathRewriter(sourcePath);
     const fileType = determineFileType(sourcePath);
     
     return {
       type: fileType,
-      path: sourcePath,        // Source file in repository
-      target: targetPath,      // Installation target
+      path: relativePath,      // Relative path for installation (shadcn/ui format)
       content: ""              // Populated dynamically by API
     };
   });

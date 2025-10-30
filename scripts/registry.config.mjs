@@ -13,19 +13,20 @@ export default {
     }
   },
   
-  // Path rewriter for installation targets
+  // Path rewriter for installation targets (shadcn/ui compatible relative paths)
   pathRewriter: (fromPath) => {
     // Special handling for template files - rename during installation
     if (fromPath === 'src/lib/flags/registry.config.template.ts') {
-      return '@/lib/flags/registry.config.ts';
+      return 'lib/flags/registry.config.ts';
     }
     
-    // Transform source paths to installation paths
+    // Transform source paths to relative installation paths
     const mappings = {
-      'src/lib/': '@/lib/',
-      'src/components/': '@/components/',
-      'src/hooks/': '@/hooks/',
-      'src/types/': '@/types/',
+      'src/lib/': 'lib/',
+      'src/components/': 'components/',
+      'src/hooks/': 'hooks/',
+      'src/types/': 'types/',
+      'scripts/': 'scripts/',
     };
     
     for (const [from, to] of Object.entries(mappings)) {
@@ -34,7 +35,8 @@ export default {
       }
     }
     
-    return fromPath.replace('src/', '@/');
+    // Fallback: remove src/ prefix for relative paths
+    return fromPath.replace(/^src\//, '');
   },
 
   // Component definitions

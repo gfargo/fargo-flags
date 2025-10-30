@@ -18,61 +18,51 @@
     {
       "type": "registry:lib",
       "path": "scripts/check-flags-registry.ts",
-      "target": "scripts/check-flags-registry.ts",
       "content": ""
     },
     {
       "type": "registry:lib",
       "path": "scripts/create-flag.ts",
-      "target": "scripts/create-flag.ts",
       "content": ""
     },
     {
       "type": "registry:lib",
       "path": "scripts/path-resolver.ts",
-      "target": "scripts/path-resolver.ts",
       "content": ""
     },
     {
       "type": "registry:component",
-      "path": "src/components/flags/flag.tsx",
-      "target": "@/components/flags/flag.tsx",
+      "path": "components/flags/flag.tsx",
       "content": ""
     },
     {
       "type": "registry:component",
-      "path": "src/components/flags/flags-provider.tsx",
-      "target": "@/components/flags/flags-provider.tsx",
+      "path": "components/flags/flags-provider.tsx",
       "content": ""
     },
     {
       "type": "registry:component",
-      "path": "src/components/flags/flags-test-provider.tsx",
-      "target": "@/components/flags/flags-test-provider.tsx",
+      "path": "components/flags/flags-test-provider.tsx",
       "content": ""
     },
     {
       "type": "registry:lib",
-      "path": "src/lib/flags/kit.ts",
-      "target": "@/lib/flags/kit.ts",
+      "path": "lib/flags/kit.ts",
       "content": ""
     },
     {
       "type": "registry:lib",
-      "path": "src/lib/flags/registry.config.template.ts",
-      "target": "@/lib/flags/registry.config.ts",
+      "path": "lib/flags/registry.config.ts",
       "content": ""
     },
     {
       "type": "registry:lib",
-      "path": "src/lib/flags/runtime.ts",
-      "target": "@/lib/flags/runtime.ts",
+      "path": "lib/flags/runtime.ts",
       "content": ""
     },
     {
       "type": "registry:lib",
-      "path": "src/lib/utils.ts",
-      "target": "@/lib/utils.ts",
+      "path": "lib/utils.ts",
       "content": ""
     }
   ]

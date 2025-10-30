@@ -14,8 +14,7 @@
   "files": [
     {
       "type": "registry:component",
-      "path": "src/components/flags/flag.tsx",
-      "target": "@/components/flags/flag.tsx",
+      "path": "components/flags/flag.tsx",
       "content": ""
     }
   ]
