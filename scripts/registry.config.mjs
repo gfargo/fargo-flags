@@ -52,7 +52,6 @@ export default {
         /^src\/lib\/flags\/kit\.ts$/,
         /^src\/lib\/flags\/runtime\.ts$/,
         /^src\/lib\/flags\/registry\.config\.template\.ts$/,
-        /^src\/lib\/utils\.ts$/,
         /^src\/components\/flags\/flags-provider\.tsx$/,
       ],
       exclude: [
