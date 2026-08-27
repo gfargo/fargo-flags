@@ -1162,7 +1162,8 @@ function MyComponent() {
             </h3>
             <pre className="p-4 bg-muted rounded text-sm overflow-x-auto border border-border">
               {`// app/layout.tsx (Server Component)
-import { resolveAllFlags, pickClientFlags } from "@/lib/flags/runtime";
+import { resolveAllFlags } from "@/lib/flags/server";
+import { pickClientFlags } from "@/lib/flags/runtime";
 import { FlagsProvider } from "@/components/flags/flags-provider";
 
 export default async function RootLayout({ children }) {

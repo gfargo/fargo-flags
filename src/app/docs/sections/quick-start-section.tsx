@@ -33,7 +33,8 @@ export function QuickStartSection() {
       </h3>
       <CodeBlock
         code={`// app/layout.tsx
-import { resolveAllFlags, pickClientFlags } from "@/lib/flags/runtime";
+import { resolveAllFlags } from "@/lib/flags/server";
+import { pickClientFlags } from "@/lib/flags/runtime";
 import { FlagsProvider } from "@/components/flags/flags-provider";
 
 export default async function RootLayout({ children }) {

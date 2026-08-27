@@ -16,19 +16,22 @@ export function ResolveAllFlagsSection() {
 
       <h3 className="text-lg font-semibold mb-2">How It Works</h3>
       <pre className="bg-muted p-4 rounded-lg text-sm mb-4">
-        {`export async function resolveAllFlags(ctx?: FlagContext): Promise<Flags> {
+        {`// src/lib/flags/server.ts — backed by the Vercel Flags SDK
+import { flag, evaluate } from "flags/next";
+
+export async function resolveAllFlags(ctx?: FlagContext): Promise<Flags> {
   const keys = Object.keys(registry) as (keyof SchemaMap)[];
-  
-  const entries = await Promise.all(
-    keys.map(async (key) => {
-      const def = registry[key];
-      // 🎯 This is where the magic happens:
-      const raw = await Promise.resolve(def.decide?.(ctx) ?? def.defaultValue);
-      const value = flagSchemas[key].parse(raw); // Zod validation
+
+  return contextStore.run(ctx ?? {}, async () => {
+    // 🎯 Each registered flag is a real flag() from the SDK; evaluate()
+    //    resolves the whole group, reading cookies/headers/overrides once.
+    const values = await evaluate(keys.map((key) => sdkFlags[key]));
+    const entries = keys.map((key, i) => {
+      const value = flagSchemas[key].parse(values[i]); // Zod validation
       return [key, value] as const;
-    })
-  );
-  return Object.fromEntries(entries) as Flags;
+    });
+    return Object.fromEntries(entries) as Flags;
+  });
 }`}
       </pre>
 
@@ -41,15 +44,17 @@ export function ResolveAllFlagsSection() {
             <strong>Gets all flag keys</strong> from your registry
           </li>
           <li>
-            <strong>Runs in parallel</strong> - all flags resolve
-            simultaneously for performance
+            <strong>Batches through the SDK</strong> - hands the group to
+            the Flags SDK&apos;s <code>evaluate()</code>, which reads
+            cookies, headers, and toolbar overrides once for all flags
           </li>
           <li>
             <strong>For each flag:</strong>
             <ul className="list-disc pl-4 mt-1 space-y-1">
               <li>
-                Calls the <code>decide()</code> function (if defined)
-                with context
+                The SDK invokes the flag&apos;s <code>decide()</code>,
+                which receives your <code>FlagContext</code> (user /
+                workspace)
               </li>
               <li>
                 Falls back to <code>defaultValue</code> if no{" "}

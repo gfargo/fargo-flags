@@ -4,13 +4,15 @@ A **streamlined toolkit** built on top of [Vercel's Flags SDK](https://flags-sdk
 
 ## 🤝 Built on Vercel's Flags SDK (Now with Batteries included ⚡️🔋)
 
-Fargo Flags is a thin, DX-focused layer on top of [Vercel's Flags SDK](https://flags-sdk.dev/). We embrace the Flags SDK’s proven patterns, and add tooling that makes them effortless to adopt at scale.
+Fargo Flags is a thin, DX-focused layer on top of [Vercel's Flags SDK](https://flags-sdk.dev/). The installed core lists `flags` as a real dependency: each `defineFlag()` is backed by a genuine `flag()` from `flags/next`, and `resolveAllFlags()` evaluates them through the SDK's `evaluate()`. We embrace the Flags SDK's proven patterns, and add tooling that makes them effortless to adopt at scale.
 
 What we embrace from the Flags SDK:
 
-- **Flags as code**: declarative definitions with consistent call sites
-- **Server-side resolution**: secure, performant evaluation during SSR
+- **Flags as code**: declarative definitions with consistent call sites, each backed by a real `flag()`
+- **Server-side resolution**: secure, performant evaluation during SSR via the SDK's `evaluate()`
 - **Type safety**: full TypeScript support with runtime validation
+- **First-party tooling**: works with the Vercel Toolbar and Flags Explorer out of the box (a `/.well-known/vercel/flags` discovery endpoint ships with the app)
+- **No vendor lock-in**: flags resolve from in-code `decide()` by default — no Vercel account required — and you can opt into `@flags-sdk/vercel` for dashboard management whenever you want
 
 What we add for a better DX:
 
@@ -101,7 +103,8 @@ Add these scripts to your `package.json`:
 
 ```tsx
 // app/layout.tsx
-import { resolveAllFlags, pickClientFlags } from "@/lib/flags/runtime";
+import { resolveAllFlags } from "@/lib/flags/server";
+import { pickClientFlags } from "@/lib/flags/runtime";
 import { FlagsProvider } from "@/components/flags/flags-provider";
 
 export default async function RootLayout({ children }) {
@@ -367,7 +370,7 @@ function MyComponent() {
 
 ```tsx
 // In server components, API routes, or middleware
-import { resolveAllFlags } from "@/lib/flags/runtime";
+import { resolveAllFlags } from "@/lib/flags/server";
 
 export async function GET() {
   const flags = await resolveAllFlags({
