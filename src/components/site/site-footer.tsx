@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { Github } from "lucide-react";
-import { Wordmark } from "@/components/site/logo";
+import { Wordmark, GithubMark } from "@/components/site/logo";
 
 const GITHUB_URL = "https://github.com/gfargo/fargo-flags";
 const NPM_URL = "https://www.npmjs.com/package/fargo-flags";
@@ -49,7 +48,7 @@ export function SiteFooter() {
             rel="noreferrer"
             className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
           >
-            <Github className="h-3.5 w-3.5" />
+            <GithubMark className="h-3.5 w-3.5" />
             GitHub
           </Link>
         </nav>

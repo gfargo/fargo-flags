@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowRight, Github } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { GithubMark } from "@/components/site/logo";
 
 const GITHUB_URL = "https://github.com/gfargo/fargo-flags";
 
@@ -30,7 +31,7 @@ export function CTA() {
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-accent"
             >
-              <Github className="h-4 w-4" />
+              <GithubMark className="h-4 w-4" />
               Star on GitHub
             </Link>
           </div>

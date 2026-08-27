@@ -2,9 +2,9 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { Github, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Wordmark } from "@/components/site/logo";
+import { Wordmark, GithubMark } from "@/components/site/logo";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 const NAV = [
@@ -54,7 +54,7 @@ export function SiteHeader() {
             aria-label="GitHub repository"
             className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
           >
-            <Github className="h-4 w-4" />
+            <GithubMark className="h-4 w-4" />
           </Link>
           <ThemeToggle />
           <button

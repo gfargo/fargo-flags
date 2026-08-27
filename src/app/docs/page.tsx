@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import DocsClient from './docs-client';
 
 export const metadata: Metadata = {
-  title: "Documentation - Fargo Flags | Complete Guide to Enhanced Feature Flags",
-  description: "Complete documentation for Fargo Flags - enhanced feature flags toolkit built on Vercel's Flags SDK. Learn installation, usage, CLI tools, React components, and best practices.",
+  title: "Documentation - Fargo Flags | Typed Feature Flags Toolkit",
+  description: "Complete documentation for Fargo Flags - a typed feature flags toolkit built on Vercel's Flags SDK. Learn installation, usage, CLI tools, React components, and best practices.",
   keywords: [
     "fargo flags documentation",
     "feature flags guide",
@@ -36,7 +36,7 @@ export default function DocsPage() {
     "@context": "https://schema.org",
     "@type": "TechArticle",
     "headline": "Fargo Flags Documentation - Complete Guide",
-    "description": "Complete documentation for Fargo Flags - enhanced feature flags toolkit built on Vercel's Flags SDK. Learn installation, usage, CLI tools, React components, and best practices.",
+    "description": "Complete documentation for Fargo Flags - a typed feature flags toolkit built on Vercel's Flags SDK. Learn installation, usage, CLI tools, React components, and best practices.",
     "url": "https://flags.griffen.codes/docs",
     "datePublished": "2024-01-01",
     "dateModified": new Date().toISOString(),

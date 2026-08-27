@@ -90,11 +90,11 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="flex items-center">
+        <div className="flex min-w-0 items-center">
           <CodeBlock
             code={HERO_SNIPPET}
             filename="flags/defs/checkout-redesign.flag.ts"
-            className="w-full shadow-sm"
+            className="w-full min-w-0 shadow-sm"
           />
         </div>
       </div>

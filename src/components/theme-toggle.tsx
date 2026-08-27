@@ -8,7 +8,12 @@ export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
 
-  React.useEffect(() => setMounted(true), []);
+  React.useEffect(() => {
+    // Defer to a microtask so we synchronize with the external theme system
+    // rather than calling setState synchronously inside the effect body.
+    const id = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(id);
+  }, []);
 
   const isDark = resolvedTheme === "dark";
 
@@ -16,6 +21,7 @@ export function ThemeToggle() {
     <button
       type="button"
       aria-label="Toggle color theme"
+      suppressHydrationWarning
       onClick={() => setTheme(isDark ? "light" : "dark")}
       className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border bg-background text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
     >

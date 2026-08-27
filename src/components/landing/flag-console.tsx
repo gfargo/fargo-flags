@@ -192,9 +192,9 @@ export function FlagConsole() {
 
         <div className="mt-10 grid gap-4 lg:grid-cols-[1.1fr_1fr]">
           {/* controls + readout */}
-          <div className="flex flex-col gap-4 rounded-xl border border-border bg-card p-5">
-            <div className="flex items-center justify-between gap-4 border-b border-border pb-4">
-              <div>
+          <div className="flex min-w-0 flex-col gap-4 rounded-xl border border-border bg-card p-5">
+            <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 border-b border-border pb-4">
+              <div className="min-w-0">
                 <p className="font-mono text-sm text-foreground">
                   enable-ai-assistant
                 </p>
@@ -209,8 +209,8 @@ export function FlagConsole() {
               />
             </div>
 
-            <div className="flex items-center justify-between gap-4 border-b border-border pb-4">
-              <div>
+            <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 border-b border-border pb-4">
+              <div className="min-w-0">
                 <p className="font-mono text-sm text-foreground">
                   pagination-ui-location
                 </p>
@@ -225,8 +225,8 @@ export function FlagConsole() {
               />
             </div>
 
-            <div className="flex items-center justify-between gap-4">
-              <div>
+            <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
+              <div className="min-w-0">
                 <p className="font-mono text-sm text-foreground">theme-mode</p>
                 <p className="text-xs text-muted-foreground">
                   enum · repaints the preview surface
@@ -252,7 +252,7 @@ export function FlagConsole() {
           {/* preview */}
           <div
             className={cn(
-              "min-h-[360px] rounded-xl border border-border bg-muted/40 p-4",
+              "min-h-[360px] min-w-0 rounded-xl border border-border bg-muted/40 p-4",
               themeMode === "dark" && "dark"
             )}
           >

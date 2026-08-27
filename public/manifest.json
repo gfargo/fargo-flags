@@ -1,7 +1,7 @@
 {
-  "name": "Fargo Flags - Enhanced Feature Flags Toolkit",
+  "name": "Fargo Flags - Typed Feature Flags Toolkit",
   "short_name": "Fargo Flags",
-  "description": "Enhanced feature flags toolkit built on Vercel's Flags SDK with CLI tools, component registry, and streamlined developer experience.",
+  "description": "A developer-focused feature flags toolkit built on Vercel's Flags SDK with typed flags-as-code, a CLI wizard, and a component registry.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
