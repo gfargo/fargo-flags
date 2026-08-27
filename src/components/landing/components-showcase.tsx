@@ -40,7 +40,7 @@ function InstallRow({
   tag?: string;
 }) {
   const [copied, setCopied] = React.useState(false);
-  const cmd = `npx shadcn@latest add ${BASE}/${name}.json`;
+  const cmd = `npx shadcn@latest add ${BASE}/${name}`;
 
   const copy = async () => {
     try {

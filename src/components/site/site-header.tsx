@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Check, Copy, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Wordmark, GithubMark } from "@/components/site/logo";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -14,7 +14,42 @@ const NAV = [
 ];
 
 const GITHUB_URL = "https://github.com/gfargo/fargo-flags";
-const NPM_URL = "https://www.npmjs.com/package/fargo-flags";
+const INSTALL_CMD =
+  "npx shadcn@latest add https://flags.griffen.codes/r/flags-complete";
+
+function InstallChip({ className }: { className?: string }) {
+  const [copied, setCopied] = React.useState(false);
+
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(INSTALL_CMD);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
+    } catch {
+      /* noop */
+    }
+  };
+
+  return (
+    <button
+      type="button"
+      onClick={copy}
+      aria-label="Copy install command"
+      className={cn(
+        "group inline-flex items-center gap-2 rounded-md border border-border px-3 py-1.5 font-mono text-xs text-muted-foreground transition-colors hover:bg-accent hover:text-foreground",
+        className
+      )}
+    >
+      <span className="text-brand">$</span>
+      <span>shadcn add flags-complete</span>
+      {copied ? (
+        <Check className="h-3.5 w-3.5 text-brand" />
+      ) : (
+        <Copy className="h-3.5 w-3.5 opacity-60 group-hover:opacity-100" />
+      )}
+    </button>
+  );
+}
 
 export function SiteHeader() {
   const [open, setOpen] = React.useState(false);
@@ -39,14 +74,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-1.5">
-          <Link
-            href={NPM_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="hidden rounded-md px-3 py-1.5 font-mono text-xs text-muted-foreground transition-colors hover:bg-accent hover:text-foreground sm:inline-flex"
-          >
-            npm i fargo-flags
-          </Link>
+          <InstallChip className="hidden sm:inline-flex" />
           <Link
             href={GITHUB_URL}
             target="_blank"
@@ -86,14 +114,7 @@ export function SiteHeader() {
               {item.label}
             </Link>
           ))}
-          <Link
-            href={NPM_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="rounded-md px-3 py-2 font-mono text-xs text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
-          >
-            npm i fargo-flags
-          </Link>
+          <InstallChip className="mt-1 justify-start" />
         </nav>
       </div>
     </header>

@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Wordmark, GithubMark } from "@/components/site/logo";
 
 const GITHUB_URL = "https://github.com/gfargo/fargo-flags";
-const NPM_URL = "https://www.npmjs.com/package/fargo-flags";
 const SDK_URL = "https://flags-sdk.dev";
 
 export function SiteFooter() {
@@ -35,12 +34,12 @@ export function SiteFooter() {
             Components
           </Link>
           <Link
-            href={NPM_URL}
+            href={SDK_URL}
             target="_blank"
             rel="noreferrer"
             className="transition-colors hover:text-foreground"
           >
-            npm
+            Flags SDK
           </Link>
           <Link
             href={GITHUB_URL}
