@@ -2,15 +2,15 @@
   "name": "flags-cli",
   "type": "registry:lib",
   "dependencies": [
-    "react@^19.1.0",
-    "lucide-react@^0.400.0",
+    "react@^19.2.0",
+    "lucide-react@^1.34.0",
     "class-variance-authority@^0.7.1",
     "clsx@^2.1.1",
-    "tailwind-merge@^2.5.4",
-    "tsx@^4.19.2",
+    "tailwind-merge@^3.3.1",
+    "tsx@^4.20.5",
     "prompts@^2.4.2",
-    "fast-glob@^3.3.2",
-    "prettier@^3.4.2"
+    "fast-glob@^3.3.3",
+    "prettier@^3.6.2"
   ],
   "registryDependencies": [
     "https://flags.griffen.codes/r/flags-core"

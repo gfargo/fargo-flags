@@ -1,11 +1,12 @@
 import { z } from "zod";
-import {
-  flagSchemas,
-  registry,
-  clientFlagKeys,
-  type SchemaMap,
-} from "./registry.config";
-import type { FlagContext } from "./kit";
+import { registry, clientFlagKeys, type SchemaMap } from "./registry.config";
+
+/**
+ * Client-safe runtime helpers. This module must not import `flags/next`
+ * (or anything reaching `next/headers`) because it is pulled into client
+ * bundles via the test provider. Server-side resolution lives in
+ * `server.ts` (`resolveAllFlags`), which is backed by the Flags SDK.
+ */
 
 export type Flags = { [K in keyof SchemaMap]: z.infer<SchemaMap[K]> };
 export type FlagKey = keyof Flags;
@@ -19,29 +20,7 @@ export const defaultFlags = Object.fromEntries(
   Object.entries(registry).map(([key, def]) => [key, def.defaultValue])
 ) as Flags;
 
-/** Resolve all flags on the server, validate against schemas. */
-export async function resolveAllFlags(ctx?: FlagContext): Promise<Flags> {
-  const keys = Object.keys(registry) as (keyof SchemaMap)[];
-
-  // Handle empty registry case
-  if (keys.length === 0) {
-    return {} as Flags;
-  }
-
-  const entries = await Promise.all(
-    keys.map(async (key) => {
-      const def = registry[key];
-      const raw = await Promise.resolve(
-        def.decide?.(ctx!) ?? def.defaultValue
-      );
-      const value = flagSchemas[key].parse(raw);
-      return [key, value] as const;
-    })
-  );
-  return Object.fromEntries(entries) as Flags;
-}
-
-/** Create the client-safe subset (applies optional per-flag 'serialize'). */
+/** Create the client-safe subset (respects each flag's `client.public`). */
 export function pickClientFlags(flags: Flags): ClientFlags {
   const out: Record<string, unknown> = {};
   for (const key of clientFlagKeys) {

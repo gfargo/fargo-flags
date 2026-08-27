@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { VercelToolbar } from "@vercel/toolbar/next";
 import "./globals.css";
-import { resolveAllFlags, pickClientFlags } from "@/lib/flags/runtime";
+import { resolveAllFlags } from "@/lib/flags/server";
+import { pickClientFlags } from "@/lib/flags/runtime";
 import { FlagsProvider } from "@/components/flags/flags-provider";
 
 const geistSans = Geist({
@@ -72,6 +74,10 @@ export default async function RootLayout({
   });
   const clientFlags = pickClientFlags(serverFlags);
 
+  // On Vercel the toolbar is auto-injected in preview deployments; this
+  // manual injection is only for local development (Flags Explorer + overrides).
+  const shouldInjectToolbar = process.env.NODE_ENV === "development";
+
   return (
     <html lang="en">
       <head>
@@ -87,6 +93,7 @@ export default async function RootLayout({
           {children}
         </FlagsProvider>
         <Analytics />
+        {shouldInjectToolbar && <VercelToolbar />}
       </body>
     </html>
   );
