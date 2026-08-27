@@ -20,7 +20,7 @@ export function createPathResolver(rootDir: string = process.cwd()): PathResolve
     const tsconfigPath = path.join(rootDir, "tsconfig.json");
     
     let aliases: Record<string, string> = {};
-    let baseDir = rootDir;
+    const baseDir = rootDir;
     let hasSrcDir = false;
 
     // Try to read components.json first
@@ -30,7 +30,7 @@ export function createPathResolver(rootDir: string = process.cwd()): PathResolve
         if (componentsConfig.aliases) {
           aliases = componentsConfig.aliases;
         }
-      } catch (error) {
+      } catch {
         console.warn("Warning: Could not parse components.json, falling back to defaults");
       }
     }
@@ -54,7 +54,7 @@ export function createPathResolver(rootDir: string = process.cwd()): PathResolve
             }
           }
         }
-      } catch (error) {
+      } catch {
         console.warn("Warning: Could not parse tsconfig.json, falling back to defaults");
       }
     }

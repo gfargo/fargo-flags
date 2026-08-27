@@ -56,7 +56,7 @@ function MyComponent() {
       <h3 className="text-lg font-semibold mb-2">Server-Side Usage</h3>
       <pre className="bg-muted p-4 rounded-lg text-sm">
         {`// In server components or API routes
-import { resolveAllFlags } from "@/lib/flags/runtime";
+import { resolveAllFlags } from "@/lib/flags/server";
 
 export async function GET() {
   const flags = await resolveAllFlags({

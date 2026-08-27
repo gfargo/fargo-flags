@@ -2,12 +2,13 @@
   "name": "flags-core",
   "type": "registry:lib",
   "dependencies": [
-    "react@^19.1.0",
-    "lucide-react@^0.400.0",
+    "react@^19.2.0",
+    "lucide-react@^1.34.0",
     "class-variance-authority@^0.7.1",
     "clsx@^2.1.1",
-    "tailwind-merge@^2.5.4",
-    "zod@^3.22.0"
+    "tailwind-merge@^3.3.1",
+    "zod@^4.4.3",
+    "flags@^4.3.0"
   ],
   "registryDependencies": [],
   "files": [
@@ -29,12 +30,12 @@
     {
       "type": "registry:lib",
       "path": "lib/flags/runtime.ts",
-      "content": "import { z } from \"zod\";\nimport {\n  flagSchemas,\n  registry,\n  clientFlagKeys,\n  type SchemaMap,\n} from \"./registry.config\";\nimport type { FlagContext } from \"./kit\";\n\nexport type Flags = { [K in keyof SchemaMap]: z.infer<SchemaMap[K]> };\nexport type FlagKey = keyof Flags;\n\nexport type ClientSchemaMap = Pick<SchemaMap, (typeof clientFlagKeys)[number]>;\nexport type ClientFlags = {\n  [K in keyof ClientSchemaMap]: z.infer<ClientSchemaMap[K]>;\n};\n\nexport const defaultFlags = Object.fromEntries(\n  Object.entries(registry).map(([key, def]) => [key, def.defaultValue])\n) as Flags;\n\n/** Resolve all flags on the server, validate against schemas. */\nexport async function resolveAllFlags(ctx?: FlagContext): Promise<Flags> {\n  const keys = Object.keys(registry) as (keyof SchemaMap)[];\n\n  // Handle empty registry case\n  if (keys.length === 0) {\n    return {} as Flags;\n  }\n\n  const entries = await Promise.all(\n    keys.map(async (key) => {\n      const def = registry[key];\n      const raw = await Promise.resolve(\n        def.decide?.(ctx!) ?? def.defaultValue\n      );\n      const value = flagSchemas[key].parse(raw);\n      return [key, value] as const;\n    })\n  );\n  return Object.fromEntries(entries) as Flags;\n}\n\n/** Create the client-safe subset (applies optional per-flag 'serialize'). */\nexport function pickClientFlags(flags: Flags): ClientFlags {\n  const out: Record<string, unknown> = {};\n  for (const key of clientFlagKeys) {\n    out[key as string] = flags[key];\n  }\n  return out as ClientFlags;\n}\n"
+      "content": "import { z } from \"zod\";\nimport { registry, clientFlagKeys, type SchemaMap } from \"./registry.config\";\n\n/**\n * Client-safe runtime helpers. This module must not import `flags/next`\n * (or anything reaching `next/headers`) because it is pulled into client\n * bundles via the test provider. Server-side resolution lives in\n * `server.ts` (`resolveAllFlags`), which is backed by the Flags SDK.\n */\n\nexport type Flags = { [K in keyof SchemaMap]: z.infer<SchemaMap[K]> };\nexport type FlagKey = keyof Flags;\n\nexport type ClientSchemaMap = Pick<SchemaMap, (typeof clientFlagKeys)[number]>;\nexport type ClientFlags = {\n  [K in keyof ClientSchemaMap]: z.infer<ClientSchemaMap[K]>;\n};\n\nexport const defaultFlags = Object.fromEntries(\n  Object.entries(registry).map(([key, def]) => [key, def.defaultValue])\n) as Flags;\n\n/** Create the client-safe subset (respects each flag's `client.public`). */\nexport function pickClientFlags(flags: Flags): ClientFlags {\n  const out: Record<string, unknown> = {};\n  for (const key of clientFlagKeys) {\n    out[key as string] = flags[key];\n  }\n  return out as ClientFlags;\n}\n"
     },
     {
       "type": "registry:lib",
-      "path": "lib/utils.ts",
-      "content": "import { clsx, type ClassValue } from \"clsx\"\nimport { twMerge } from \"tailwind-merge\"\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n"
+      "path": "lib/flags/server.ts",
+      "content": "import \"server-only\";\nimport { AsyncLocalStorage } from \"node:async_hooks\";\nimport { flag, evaluate } from \"flags/next\";\nimport { registry, flagSchemas, type SchemaMap } from \"./registry.config\";\nimport type { FlagContext } from \"./kit\";\nimport type { Flags } from \"./runtime\";\n\n/**\n * Server-only: the Flags SDK engine.\n *\n * Every flag defined with `defineFlag` is backed here by a real\n * `flag()` declaration from `flags/next`. This is what makes Fargo Flags\n * genuinely \"built on the Vercel Flags SDK\": the SDK owns evaluation,\n * request-scoped memoization, Flags Explorer discovery, and toolbar\n * overrides, while `defineFlag` keeps the ergonomic Zod-typed authoring\n * surface and the client/public exposure model.\n *\n * This module imports `flags/next` (which reaches into `next/headers`),\n * so it must never enter a client bundle — hence `server-only`. The\n * client-safe helpers (`defaultFlags`, `pickClientFlags`) live in\n * `runtime.ts`.\n */\n\ntype RegistryDef = (typeof registry)[keyof typeof registry];\n\n// Bridges the app-provided FlagContext (getUser/getWorkspace) into each\n// flag's `decide` without a provider adapter. `resolveAllFlags` sets the\n// store for the duration of the batch; the SDK invokes `decide` within it.\nconst contextStore = new AsyncLocalStorage<FlagContext>();\n\nfunction buildSdkFlag(key: string, def: RegistryDef) {\n  return flag({\n    key,\n    description: def.description,\n    defaultValue: def.defaultValue,\n    options: def.options,\n    // Code-based resolution — no external provider required. Attach an\n    // adapter here (e.g. `adapter: vercelAdapter`) to source values from\n    // Vercel Flags or another provider instead.\n    decide() {\n      const ctx = contextStore.getStore() ?? {};\n      return def.decide ? def.decide(ctx) : def.defaultValue;\n    },\n  });\n}\n\n/** Real Flags SDK declarations, one per registered flag. */\nexport const sdkFlags = Object.fromEntries(\n  Object.entries(registry).map(([key, def]) => [key, buildSdkFlag(key, def)])\n) as Record<keyof SchemaMap, ReturnType<typeof flag>>;\n\n/**\n * Resolve every flag on the server through the Flags SDK, then validate\n * each result against its Zod schema. Uses the SDK's `evaluate()` batch\n * API so headers, cookies, and toolbar overrides are read once for the\n * whole group.\n */\nexport async function resolveAllFlags(ctx?: FlagContext): Promise<Flags> {\n  const keys = Object.keys(registry) as (keyof SchemaMap)[];\n  if (keys.length === 0) return {} as Flags;\n\n  return contextStore.run(ctx ?? {}, async () => {\n    const group = keys.map((key) => sdkFlags[key]);\n    const values = await evaluate(group);\n    const entries = keys.map((key, i) => {\n      const value = flagSchemas[key].parse(values[i]);\n      return [key, value] as const;\n    });\n    return Object.fromEntries(entries) as Flags;\n  });\n}\n"
     }
   ]
 }

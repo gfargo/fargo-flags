@@ -5,11 +5,11 @@ export default {
   // Global dependencies shared across components
   defaults: {
     dependencies: {
-      "react": "^19.1.0",
-      "lucide-react": "^0.400.0",
+      "react": "^19.2.0",
+      "lucide-react": "^1.34.0",
       "class-variance-authority": "^0.7.1",
       "clsx": "^2.1.1",
-      "tailwind-merge": "^2.5.4",
+      "tailwind-merge": "^3.3.1",
     }
   },
   
@@ -46,11 +46,13 @@ export default {
       fileName: "flags-core.json",
       type: "registry:lib",
       dependencies: {
-        "zod": "^3.22.0"
+        "zod": "^4.4.3",
+        "flags": "^4.3.0"
       },
       include: [
         /^src\/lib\/flags\/kit\.ts$/,
         /^src\/lib\/flags\/runtime\.ts$/,
+        /^src\/lib\/flags\/server\.ts$/,
         /^src\/lib\/flags\/registry\.config\.template\.ts$/,
         /^src\/components\/flags\/flags-provider\.tsx$/,
       ],
@@ -83,10 +85,10 @@ export default {
       fileName: "flags-cli.json",
       type: "registry:lib",
       dependencies: {
-        "tsx": "^4.19.2",
+        "tsx": "^4.20.5",
         "prompts": "^2.4.2",
-        "fast-glob": "^3.3.2",
-        "prettier": "^3.4.2",
+        "fast-glob": "^3.3.3",
+        "prettier": "^3.6.2",
       },
       include: [
         /^scripts\/create-flag\.ts$/,
@@ -100,15 +102,17 @@ export default {
       fileName: "flags-complete.json",
       type: "registry:lib",
       dependencies: {
-        "zod": "^3.22.0",
-        "tsx": "^4.19.2",
+        "zod": "^4.4.3",
+        "flags": "^4.3.0",
+        "tsx": "^4.20.5",
         "prompts": "^2.4.2",
-        "fast-glob": "^3.3.2",
-        "prettier": "^3.4.2",
+        "fast-glob": "^3.3.3",
+        "prettier": "^3.6.2",
       },
       include: [
         /^src\/lib\/flags\/kit\.ts$/,
         /^src\/lib\/flags\/runtime\.ts$/,
+        /^src\/lib\/flags\/server\.ts$/,
         /^src\/lib\/flags\/registry\.config\.template\.ts$/,
         /^src\/components\/flags\/flags-provider\.tsx$/,
         /^src\/components\/flags\/flag\.tsx$/,

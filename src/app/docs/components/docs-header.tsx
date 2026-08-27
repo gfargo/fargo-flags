@@ -12,16 +12,16 @@ export function DocsHeader({ sections, onSectionClick }: DocsHeaderProps) {
       <div className="mb-8 lg:hidden">
         <Link
           href="/"
-          className="text-primary hover:text-primary/80 text-sm mb-4 inline-block"
+          className="text-muted-foreground hover:text-foreground text-sm mb-4 inline-block"
         >
-          ← Back to Demo
+          ← Back to home
         </Link>
-        <h1 className="text-4xl font-bold mb-4">
+        <h1 className="text-4xl font-bold mb-4 tracking-tight">
           Fargo Flags Documentation
         </h1>
-        <p className="text-xl text-muted-foreground">
-          Complete guide to the enhanced feature flags toolkit built on
-          Vercel&apos;s Flags SDK.
+        <p className="text-xl text-muted-foreground text-pretty">
+          Complete guide to the feature flags toolkit built on Vercel&apos;s
+          Flags SDK.
         </p>
       </div>
 
@@ -43,12 +43,12 @@ export function DocsHeader({ sections, onSectionClick }: DocsHeaderProps) {
 
       {/* Desktop Header */}
       <div className="hidden lg:block mb-8">
-        <h1 className="text-4xl font-bold mb-4">
+        <h1 className="text-4xl font-bold mb-4 tracking-tight">
           Fargo Flags Documentation
         </h1>
-        <p className="text-xl text-muted-foreground">
-          Complete guide to the enhanced feature flags toolkit built on
-          Vercel&apos;s Flags SDK.
+        <p className="text-xl text-muted-foreground text-pretty">
+          Complete guide to the feature flags toolkit built on Vercel&apos;s
+          Flags SDK.
         </p>
       </div>
     </>

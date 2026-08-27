@@ -37,7 +37,8 @@ export function ComponentsSection() {
           <pre className="bg-muted p-4 rounded-lg text-sm mb-4">
             {`// app/layout.tsx (Server Component)
 import { ReactNode } from "react";
-import { resolveAllFlags, pickClientFlags } from "@/lib/flags/runtime";
+import { resolveAllFlags } from "@/lib/flags/server";
+import { pickClientFlags } from "@/lib/flags/runtime";
 import { FlagsProvider } from "@/components/flags/flags-provider";
 
 export default async function RootLayout({ 
