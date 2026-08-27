@@ -71,7 +71,7 @@ export default function DocsClient() {
   };
 
   return (
-    <div className="font-sans min-h-screen bg-gradient-to-br from-background via-primary/5 to-background">
+    <div className="font-sans min-h-screen bg-background">
       <div className="flex">
         <DocsSidebar
           sections={sections}

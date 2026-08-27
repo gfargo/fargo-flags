@@ -3,9 +3,9 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title:
-    "Fargo Flags - Enhanced Feature Flags Toolkit Built on Vercel's Flags SDK",
+    "Fargo Flags - Typed Feature Flags Toolkit Built on Vercel's Flags SDK",
   description:
-    "Streamlined feature flags toolkit with CLI tools, component registry, and enhanced developer experience. Built on Vercel's Flags SDK with TypeScript support, server-side resolution, and React components.",
+    "A developer-focused feature flags toolkit: typed flags-as-code, server-side resolution, a CLI wizard, and a shadcn-style component registry. Built on Vercel's Flags SDK.",
   keywords: [
     "feature flags",
     "feature toggles",
@@ -47,7 +47,7 @@ export default function Home() {
     "@type": "SoftwareApplication",
     name: "Fargo Flags",
     description:
-      "Enhanced feature flags toolkit built on Vercel's Flags SDK with CLI tools, component registry, and streamlined developer experience.",
+      "A developer-focused feature flags toolkit built on Vercel's Flags SDK with typed flags-as-code, a CLI wizard, and a component registry.",
     url: "https://flags.griffen.codes",
     applicationCategory: "DeveloperApplication",
     operatingSystem: "Any",

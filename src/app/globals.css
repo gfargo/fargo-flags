@@ -8,6 +8,8 @@
   --color-foreground: rgb(var(--foreground));
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-brand: rgb(var(--brand));
+  --color-brand-foreground: rgb(var(--brand-foreground));
   --color-sidebar-ring: rgb(var(--sidebar-ring));
   --color-sidebar-border: rgb(var(--sidebar-border));
   --color-sidebar-accent-foreground: rgb(var(--sidebar-accent-foreground));
@@ -45,114 +47,91 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  /* Light mode - Purple theme (rgb(81, 18, 129) = #511281) */
+  --radius: 0.5rem;
+
+  /* Neutral canvas with purple (#511281) as the single deliberate accent */
   --background: 255 255 255;
-  --foreground: 81 18 129;
+  --foreground: 24 24 27;
   --card: 255 255 255;
-  --card-foreground: 81 18 129;
+  --card-foreground: 24 24 27;
   --popover: 255 255 255;
-  --popover-foreground: 81 18 129;
+  --popover-foreground: 24 24 27;
+
   --primary: 81 18 129;
-  --primary-foreground: 255 255 255;
-  --secondary: 248 250 252;
-  --secondary-foreground: 81 18 129;
-  --muted: 248 250 252;
-  --muted-foreground: 100 116 139;
-  --accent: 248 250 252;
-  --accent-foreground: 81 18 129;
-  --destructive: 239 68 68;
-  --destructive-foreground: 255 255 255;
-  --border: 226 232 240;
-  --input: 226 232 240;
+  --primary-foreground: 250 250 250;
+  --secondary: 244 244 245;
+  --secondary-foreground: 24 24 27;
+  --muted: 245 245 246;
+  --muted-foreground: 113 113 122;
+  --accent: 244 244 245;
+  --accent-foreground: 24 24 27;
+
+  --brand: 81 18 129;
+  --brand-foreground: 250 250 250;
+
+  --destructive: 220 38 38;
+  --destructive-foreground: 250 250 250;
+  --border: 228 228 231;
+  --input: 228 228 231;
   --ring: 81 18 129;
+
   --chart-1: 81 18 129;
-  --chart-2: 139 69 19;
-  --chart-3: 21 128 61;
-  --chart-4: 59 130 246;
-  --chart-5: 168 85 247;
-  --sidebar: 255 255 255;
-  --sidebar-foreground: 81 18 129;
+  --chart-2: 124 58 173;
+  --chart-3: 161 161 170;
+  --chart-4: 212 212 216;
+  --chart-5: 39 39 42;
+
+  --sidebar: 250 250 250;
+  --sidebar-foreground: 24 24 27;
   --sidebar-primary: 81 18 129;
-  --sidebar-primary-foreground: 255 255 255;
-  --sidebar-accent: 248 250 252;
-  --sidebar-accent-foreground: 81 18 129;
-  --sidebar-border: 226 232 240;
+  --sidebar-primary-foreground: 250 250 250;
+  --sidebar-accent: 244 244 245;
+  --sidebar-accent-foreground: 24 24 27;
+  --sidebar-border: 228 228 231;
   --sidebar-ring: 81 18 129;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Dark mode - Golden theme (rgb(255, 211, 113) = #FFD371) */
-    --background: 15 23 42;
-    --foreground: 255 211 113;
-    --card: 30 41 59;
-    --card-foreground: 255 211 113;
-    --popover: 30 41 59;
-    --popover-foreground: 255 211 113;
-    --primary: 255 211 113;
-    --primary-foreground: 15 23 42;
-    --secondary: 51 65 85;
-    --secondary-foreground: 255 211 113;
-    --muted: 51 65 85;
-    --muted-foreground: 148 163 184;
-    --accent: 51 65 85;
-    --accent-foreground: 255 211 113;
-    --destructive: 239 68 68;
-    --destructive-foreground: 255 255 255;
-    --border: 51 65 85;
-    --input: 51 65 85;
-    --ring: 255 211 113;
-    --chart-1: 255 211 113;
-    --chart-2: 34 197 94;
-    --chart-3: 59 130 246;
-    --chart-4: 168 85 247;
-    --chart-5: 239 68 68;
-    --sidebar: 30 41 59;
-    --sidebar-foreground: 255 211 113;
-    --sidebar-primary: 255 211 113;
-    --sidebar-primary-foreground: 15 23 42;
-    --sidebar-accent: 51 65 85;
-    --sidebar-accent-foreground: 255 211 113;
-    --sidebar-border: 51 65 85;
-    --sidebar-ring: 255 211 113;
-  }
-}
-
 .dark {
-  /* Manual dark mode override */
-  --background: 15 23 42;
-  --foreground: 255 211 113;
-  --card: 30 41 59;
-  --card-foreground: 255 211 113;
-  --popover: 30 41 59;
-  --popover-foreground: 255 211 113;
-  --primary: 255 211 113;
-  --primary-foreground: 15 23 42;
-  --secondary: 51 65 85;
-  --secondary-foreground: 255 211 113;
-  --muted: 51 65 85;
-  --muted-foreground: 148 163 184;
-  --accent: 51 65 85;
-  --accent-foreground: 255 211 113;
-  --destructive: 239 68 68;
-  --destructive-foreground: 255 255 255;
-  --border: 51 65 85;
-  --input: 51 65 85;
-  --ring: 255 211 113;
-  --chart-1: 255 211 113;
-  --chart-2: 34 197 94;
-  --chart-3: 59 130 246;
-  --chart-4: 168 85 247;
-  --chart-5: 239 68 68;
-  --sidebar: 30 41 59;
-  --sidebar-foreground: 255 211 113;
-  --sidebar-primary: 255 211 113;
-  --sidebar-primary-foreground: 15 23 42;
-  --sidebar-accent: 51 65 85;
-  --sidebar-accent-foreground: 255 211 113;
-  --sidebar-border: 51 65 85;
-  --sidebar-ring: 255 211 113;
+  /* Neutral near-black canvas; purple lifted for legibility on dark */
+  --background: 9 9 11;
+  --foreground: 244 244 245;
+  --card: 24 24 27;
+  --card-foreground: 244 244 245;
+  --popover: 24 24 27;
+  --popover-foreground: 244 244 245;
+
+  --primary: 192 132 252;
+  --primary-foreground: 24 24 27;
+  --secondary: 39 39 42;
+  --secondary-foreground: 244 244 245;
+  --muted: 39 39 42;
+  --muted-foreground: 161 161 170;
+  --accent: 39 39 42;
+  --accent-foreground: 244 244 245;
+
+  --brand: 192 132 252;
+  --brand-foreground: 24 24 27;
+
+  --destructive: 248 113 113;
+  --destructive-foreground: 24 24 27;
+  --border: 39 39 42;
+  --input: 39 39 42;
+  --ring: 192 132 252;
+
+  --chart-1: 192 132 252;
+  --chart-2: 147 91 214;
+  --chart-3: 113 113 122;
+  --chart-4: 63 63 70;
+  --chart-5: 228 228 231;
+
+  --sidebar: 24 24 27;
+  --sidebar-foreground: 244 244 245;
+  --sidebar-primary: 192 132 252;
+  --sidebar-primary-foreground: 24 24 27;
+  --sidebar-accent: 39 39 42;
+  --sidebar-accent-foreground: 244 244 245;
+  --sidebar-border: 39 39 42;
+  --sidebar-ring: 192 132 252;
 }
 
 @layer base {
@@ -161,5 +140,19 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* Subtle technical grid backdrop for the signature demo/hero */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgb(var(--border) / 0.6) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(var(--border) / 0.6) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+  .bg-grid-fade {
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
   }
 }

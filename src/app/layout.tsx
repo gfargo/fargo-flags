@@ -6,6 +6,7 @@ import "./globals.css";
 import { resolveAllFlags } from "@/lib/flags/server";
 import { pickClientFlags } from "@/lib/flags/runtime";
 import { FlagsProvider } from "@/components/flags/flags-provider";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,10 +21,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://flags.griffen.codes'),
   title: {
-    default: "Fargo Flags - Enhanced Feature Flags Toolkit",
+    default: "Fargo Flags - Typed Feature Flags Toolkit",
     template: "%s | Fargo Flags"
   },
-  description: "Enhanced feature flags toolkit built on Vercel's Flags SDK with CLI tools, component registry, and streamlined developer experience.",
+  description: "A developer-focused feature flags toolkit built on Vercel's Flags SDK — typed flags-as-code, a CLI wizard, and a shadcn-style component registry.",
   keywords: [
     "feature flags",
     "feature toggles",
@@ -79,7 +80,7 @@ export default async function RootLayout({
   const shouldInjectToolbar = process.env.NODE_ENV === "development";
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="canonical" href="https://flags.griffen.codes" />
         <meta name="theme-color" content="#511281" />
@@ -89,9 +90,16 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <FlagsProvider flags={clientFlags}>
-          {children}
-        </FlagsProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <FlagsProvider flags={clientFlags}>
+            {children}
+          </FlagsProvider>
+        </ThemeProvider>
         <Analytics />
         {shouldInjectToolbar && <VercelToolbar />}
       </body>
