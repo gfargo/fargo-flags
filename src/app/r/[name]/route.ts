@@ -22,10 +22,14 @@ export async function GET(
 ) {
   try {
     const { name } = await params;
-    
+
+    // Accept an optional `.json` suffix (shadcn CLI convention) so both
+    // `/r/flags-core` and `/r/flags-core.json` resolve to the same item.
+    const requestedName = name.endsWith('.json') ? name.slice(0, -'.json'.length) : name;
+
     // Sanitize component name to prevent path traversal
-    const sanitizedName = name.replace(/[^a-zA-Z0-9-]/g, '');
-    if (!sanitizedName || sanitizedName !== name) {
+    const sanitizedName = requestedName.replace(/[^a-zA-Z0-9-]/g, '');
+    if (!sanitizedName || sanitizedName !== requestedName) {
       return NextResponse.json({ 
         error: 'Invalid component name' 
       }, { status: 400 });

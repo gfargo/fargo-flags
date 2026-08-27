@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ArrowRight, Check, Copy, Terminal } from "lucide-react";
 import { CodeBlock } from "@/components/landing/code-block";
 
-const INSTALL_CMD = "npx shadcn@latest add https://flags.griffen.codes/r/flags-complete.json";
+const INSTALL_CMD = "npx shadcn@latest add https://flags.griffen.codes/r/flags-complete";
 
 const HERO_SNIPPET = `import { defineFlag } from "@/lib/flags/kit";
 
@@ -39,7 +39,7 @@ function InstallChip() {
     >
       <Terminal className="h-4 w-4 shrink-0 text-brand" />
       <code className="flex-1 truncate font-mono text-xs text-foreground sm:text-[13px]">
-        npx shadcn add flags-complete
+        {INSTALL_CMD}
       </code>
       <span className="text-muted-foreground transition-colors group-hover:text-foreground">
         {copied ? <Check className="h-4 w-4 text-brand" /> : <Copy className="h-4 w-4" />}
